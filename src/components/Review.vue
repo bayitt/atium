@@ -14,24 +14,24 @@ defineProps<TReview>()
       <div class="flex gap-2 mb-4">
         <RouterLink
           v-for="(category, index) in categories"
-          class="text-[0.85rem] capitalize font-semibold underline decoration-double text-[rgba(0,0,0,0.75)]"
+          class="text-[0.85rem] capitalize underline decoration-double text-[rgba(0,0,0,0.75)]"
           :key="index"
           :to="`/category${category.slug}`"
           >{{ category.name }}</RouterLink
         >
       </div>
       <p class="capitalize text-[1.1rem] font-semibold mb-2 text-black">{{ title }}</p>
-      <p class="text-[0.94rem]/6 mb-4">{{ content.slice(0, 200) }}</p>
-      <p class="text-xs uppercase font-semibold mb-4">
-        {{ parseDate(created_at) }} | BOOK BY {{ author }}
-      </p>
-      <p v-if="series" class="text-sm">
+      <p class="text-[0.94rem]/6 mb-4">{{ excerpt }}</p>
+      <p v-if="series" class="text-sm mb-4">
         Published in
         <RouterLink
           :to="`/series${series.slug}`"
-          class="capitalize underline decoration-double text-black font-medium"
+          class="capitalize decoration-double text-black font-medium"
           >{{ series.name }}</RouterLink
         >
+      </p>
+      <p class="text-xs uppercase font-semibold">
+        {{ parseDate(created_at) }} | BOOK BY {{ author }}
       </p>
     </div>
     <div class="col-span-4 flex items-center">

@@ -7,4 +7,5 @@ export type TReview = {
   created_at: string
   categories: { name: string; slug: string }[]
   series?: { name: string; slug: string }
+  excerpt?: string
 }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, Suspense, watchEffect } from 'vue'
+import { ref, Suspense, watch } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import Review from './Review.vue'
 import ReviewSkeleton from './ReviewSkeleton.vue'
@@ -17,18 +17,23 @@ const updateReviews = (fetchedReviews: TReview[]) => {
 
 useGetReviews(updateReviews)
 
-watchEffect(() => {
-  console.log(route.params)
-  if (route.params?.slug) {
-    const category = (categories?.value ?? []).find(({ slug }) => slug === '/' + route.params.slug)
-    if (!category) return
-    reviews.value = undefined
-    useGetReviews(updateReviews, category.uuid)
-  } else {
-    reviews.value = undefined
-    useGetReviews(updateReviews)
+watch(
+  () => route.params?.slug,
+  () => {
+    console.log(route.params)
+    if (route.params?.slug) {
+      const category = (categories?.value ?? []).find(
+        ({ slug }) => slug === '/' + route.params.slug
+      )
+      if (!category) return
+      reviews.value = undefined
+      useGetReviews(updateReviews, category.uuid)
+    } else {
+      reviews.value = undefined
+      useGetReviews(updateReviews)
+    }
   }
-})
+)
 </script>
 
 <template>
