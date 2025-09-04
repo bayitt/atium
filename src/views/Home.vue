@@ -29,7 +29,9 @@ watchEffect(() => {
             :key="index"
             class="px-4 py-3 rounded-full transition-colors duration-500 ease-in"
             :class="
-              path === route.path || (route.path.length > 1 && path.includes(route.path))
+              path === route.path ||
+              (route.path.length > 1 && path.includes(route.path)) ||
+              (path.includes('category') && route.path === '/')
                 ? 'text-white bg-black'
                 : ''
             "

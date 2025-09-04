@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 
 type TCategory = {
+  uuid: string
   name: string
   slug: string
 }
