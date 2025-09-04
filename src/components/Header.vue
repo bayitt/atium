@@ -5,7 +5,7 @@ import Button from '@/components/Button.vue'
 <template>
   <nav class="w-screen border-b-[1px] border-b-[rgba(0,0,0,0.05)]">
     <div class="max-w-[1200px] mx-auto py-4 flex justify-between items-center">
-      <p class="font-semibold text-base">olamileke's library</p>
+      <p class="text-base text-[rgba(0,0,0,0.8)] font-semibold">olamileke's library</p>
 
       <div class="flex gap-4">
         <!-- <svg

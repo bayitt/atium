@@ -20,14 +20,14 @@ watchEffect(() => {
   <section>
     <div class="max-w-[1200px] mx-auto grid grid-cols-12">
       <div
-        class="col-span-7 py-5 border-r-[1px] border-r-[rgba(0,0,0,0.05)] pr-[20%]"
+        class="col-span-8 py-5 border-r-[1px] border-r-[rgba(0,0,0,0.05)] pr-[15%]"
         style="min-height: calc(100vh - 56px)"
       >
-        <div class="flex gap-5 text-[14px] font-semibold text-[rgba(0,0,0,0.8)] mb-8">
+        <div class="flex gap-5 text-[14px] text-[rgba(0,0,0,0.8)] mb-8">
           <RouterLink
             v-for="(route, index) in routes"
             :key="index"
-            class="px-4 py-3 transition-colors duration-500 ease-in"
+            class="px-4 py-3 rounded-full transition-colors duration-500 ease-in"
             :class="
               path === route.path || (route.path.length > 1 && path.includes(route.path))
                 ? 'text-white bg-black'
