@@ -1,7 +1,18 @@
 <script setup lang="ts">
+import { ref, watchEffect } from 'vue'
+import { RouterLink, useRoute, RouterView } from 'vue-router'
 import Header from '../components/Header.vue'
-import Categories from '../components/Categories.vue'
-import { RouterLink } from 'vue-router'
+
+const route = useRoute()
+const path = ref(route.path)
+const routes = [
+  { name: 'Reviews', path: '/' },
+  { name: 'Series', path: '/series' },
+  { name: 'About', path: '/about' },
+]
+watchEffect(() => {
+  path.value = route.path
+})
 </script>
 
 <template>
@@ -9,17 +20,25 @@ import { RouterLink } from 'vue-router'
   <section>
     <div class="max-w-[1200px] mx-auto grid grid-cols-12">
       <div
-        class="col-span-7 py-5 border-r-[1px] border-r-[rgba(0,0,0,0.05)] min-h-[calc(100vh - 76px)]"
+        class="col-span-7 py-5 border-r-[1px] border-r-[rgba(0,0,0,0.05)] pr-[20%]"
+        style="min-height: calc(100vh - 56px)"
       >
-        <div class="flex gap-8 text-[15px] text-[rgba(0,0,0,0.8)]">
-          <RouterLink to="/" class="text-[#6F1D1B] font-bold border-b-2 border-b-[#6F1D1B]">
-            Home
-          </RouterLink>
-          <RouterLink to="/series"> Series </RouterLink>
-          <RouterLink to="/about"> About </RouterLink>
+        <div class="flex gap-5 text-[14px] font-semibold text-[rgba(0,0,0,0.8)] mb-8">
+          <RouterLink
+            v-for="(route, index) in routes"
+            :key="index"
+            class="px-4 py-3 transition-colors duration-500 ease-in"
+            :class="
+              path === route.path || (route.path.length > 1 && path.includes(route.path))
+                ? 'text-white bg-black'
+                : ''
+            "
+            :to="route.path"
+            >{{ route.name }}</RouterLink
+          >
         </div>
 
-        <Categories />
+        <RouterView />
       </div>
     </div>
   </section>

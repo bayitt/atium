@@ -11,7 +11,7 @@ export const useGetCategories = () => {
 
   fetch(`${import.meta.env?.VITE_API_URL ?? ''}/categories`)
     .then(async (response) => {
-      categories.value = await response.json()
+      categories.value = [{ name: 'All', slug: '/' }, ...(await response.json())]
     })
     .catch((responseError) => {
       error.value = responseError
