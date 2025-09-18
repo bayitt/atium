@@ -1,39 +1,60 @@
 <script setup lang="ts">
-import { ref, Suspense, watch } from 'vue'
+import { ref, Suspense, watchEffect, onMounted } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import Review from './Review.vue'
 import ReviewSkeleton from './ReviewSkeleton.vue'
-import { useGetCategories } from '../api/category'
-import { useGetReviews } from '../api/review'
-import { TReview } from '../types/review'
+import { useGetCategories } from '@/api/category'
+import { useGetReviews } from '@/api/review'
+import { TCategory } from '@/types/category'
+import { TReview } from '@/types/review'
+import { TPagination } from '@/types/pagination';
+import { store } from '@/store';
 
 const route = useRoute()
 const { categories } = useGetCategories()
 const reviews = ref<TReview[] | undefined>()
+const pagination = ref<TPagination | undefined>
 
-const updateReviews = (fetchedReviews: TReview[]) => {
+const updateReviews = (fetchedReviews: TReview[], fetchedPagination: TPagination) => {
   reviews.value = fetchedReviews
+  pagination.value = fetchedPagination
 }
 
-useGetReviews(updateReviews)
-
-watch(
-  () => route.params?.slug,
+watchEffect(
   () => {
-    console.log(route.params)
     if (route.params?.slug) {
       const category = (categories?.value ?? []).find(
         ({ slug }) => slug === '/' + route.params.slug
       )
       if (!category) return
       reviews.value = undefined
-      useGetReviews(updateReviews, category.uuid)
+      useGetReviews(1, updateReviews, category.uuid)
     } else {
       reviews.value = undefined
-      useGetReviews(updateReviews)
+      useGetReviews(1, updateReviews)
     }
   }
 )
+
+onMounted(() => {
+  window.addEventListener('scroll', () => {
+    const screenHeight = window.screen.height
+    const totalHeight = document.body.offsetHeight
+
+    if (totalHeight  - (window.scrollY + screenHeight) < 3) {
+      console.log(pagination.value)
+      if (pagination.value?.totalPages - pagination.value?.currentPage > 0) {
+        let category: TCategory;
+        if (route.params?.slug) {
+          category = (categories?.value ?? []).find(
+            ({ slug }) => slug === '/' + route.params.slug
+          )
+        }
+        useGetReviews(pagination.value.currentPage + 1, updateReviews, category?.uuid)
+      }
+    }
+  })
+})
 </script>
 
 <template>
@@ -64,6 +85,9 @@ watch(
   <div class="flex flex-col gap-8">
     <template v-if="reviews">
       <Review v-for="(review, index) in reviews" :key="index" v-bind="review" />
+      <template v-if="store.isFetching">
+        <ReviewSkeleton v-for="n in 4" :key="n" />
+      </template>
     </template>
     <template v-else>
       <ReviewSkeleton v-for="n in 4" :key="n" />

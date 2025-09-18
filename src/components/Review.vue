@@ -2,7 +2,7 @@
 import { TReview } from '../types/review'
 import { parseDate } from '../utilities/date'
 
-defineProps<TReview>()
+defineProps<Omit<TReview, "content">>()
 </script>
 
 <template>
@@ -26,7 +26,7 @@ defineProps<TReview>()
         Published in
         <RouterLink
           :to="`/series${series.slug}`"
-          class="capitalize decoration-double text-black font-medium"
+          class="capitalize underline lg:no-underline lg:hover:underline text-black font-medium"
           >{{ series.name }}</RouterLink
         >
       </p>
