@@ -85,8 +85,8 @@ onMounted(() => {
   <div class="flex flex-col gap-8">
     <template v-if="reviews">
       <Review v-for="(review, index) in reviews" :key="index" v-bind="review" />
-      <template v-if="store.isFetching">
-        <ReviewSkeleton v-for="n in 4" :key="n" />
+      <template v-if="store.networkOperation === 'get.reviews'">
+        <ReviewSkeleton v-for="n in 3" :key="n" />
       </template>
     </template>
     <template v-else>

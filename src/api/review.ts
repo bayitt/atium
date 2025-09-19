@@ -26,9 +26,9 @@ export const useGetReviews = (
     const sliceIndex = page * REVIEW_COUNT
     func(reviews.slice(0, sliceIndex), { currentPage: page, totalPages })
     return
-  } else if (store.isFetching) return
+  } else if (store.networkOperation) return
 
-  store.isFetching = true
+  store.networkOperation = 'get.reviews'
   fetch(
     categoryUuid
       ? `${import.meta.env?.VITE_API_URL}/categories/${categoryUuid}/reviews?page=${page}&count=${REVIEW_COUNT}&fields=title,slug,image,created_at,excerpt,author,categories,series`
@@ -50,7 +50,7 @@ export const useGetReviews = (
       }
 
       func(reviews, pagination)
-      store.isFetching = false
+      store.networkOperation = ''
     })
     .catch((error) => {})
 }

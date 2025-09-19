@@ -27,12 +27,12 @@ watchEffect(() => {
           <RouterLink
             v-for="(route, index) in routes"
             :key="index"
-            class="px-4 py-3 rounded-full transition-colors duration-500 ease-in"
+            class="px-4 py-3 rounded-lg transition-colors duration-500 ease-in"
             :class="
               path === route.path ||
               (route.path.length > 1 && path.includes(route.path)) ||
               (path.includes('category') && route.path === '/')
-                ? 'text-white bg-black'
+                ? 'text-black bg-[rgba(0,0,0,0.06)] font-semibold'
                 : ''
             "
             :to="route.path"
