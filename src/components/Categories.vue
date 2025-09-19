@@ -10,15 +10,21 @@ import { TReview } from '@/types/review'
 import { TPagination } from '@/types/pagination';
 import { store } from '@/store';
 
+const categories = ref<TCategory[] | undefined>()
 const route = useRoute()
-const { categories } = useGetCategories()
 const reviews = ref<TReview[] | undefined>()
 const pagination = ref<TPagination | undefined>
+
+const updateCategories = (fetchedCategories: TCategory[]) => {
+  categories.value = fetchedCategories;
+}
 
 const updateReviews = (fetchedReviews: TReview[], fetchedPagination: TPagination) => {
   reviews.value = fetchedReviews
   pagination.value = fetchedPagination
 }
+
+useGetCategories(updateCategories);
 
 watchEffect(
   () => {
@@ -42,7 +48,6 @@ onMounted(() => {
     const totalHeight = document.body.offsetHeight
 
     if (totalHeight  - (window.scrollY + screenHeight) < 3) {
-      console.log(pagination.value)
       if (pagination.value?.totalPages - pagination.value?.currentPage > 0) {
         let category: TCategory;
         if (route.params?.slug) {

@@ -22,7 +22,7 @@ defineProps<Omit<TReview, "content">>()
           class="capitalize underline lg:no-underline lg:hover:underline text-black font-medium">{{ series.name }}
         </RouterLink>
       </p>
-      <p class="text-xs uppercase font-semibold">
+      <p class="text-xs uppercase font-semibold">     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#EFBF04"
           class="size-4 relative -top-[1.5px] inline mr-1">
           <path stroke-linecap="round" stroke-linejoin="round"
