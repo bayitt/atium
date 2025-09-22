@@ -26,7 +26,7 @@ export const useGetReviews = (
     const sliceIndex = page * REVIEW_COUNT
     func(reviews.slice(0, sliceIndex), { currentPage: page, totalPages })
     return
-  } else if (store.networkOperation) return
+  } else if (store.networkOperation === 'get.reviews') return
 
   store.networkOperation = 'get.reviews'
   fetch(
@@ -52,5 +52,7 @@ export const useGetReviews = (
       func(reviews, pagination)
       store.networkOperation = ''
     })
-    .catch((error) => {})
+    .catch((error) => {
+      store.networkOperation = ''
+    })
 }
