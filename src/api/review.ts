@@ -1,6 +1,8 @@
+import { useRoute } from 'vue-router'
 import type { TReview } from '@/types/review'
 import type { TPagination } from '@/types/pagination'
 import { store } from '@/store'
+import type { TSeries } from '@/types/series'
 
 const REVIEW_COUNT = 3
 
@@ -52,7 +54,42 @@ export const useGetReviews = (
       func(reviews, pagination)
       store.networkOperation = ''
     })
-    .catch((error) => {
-      store.networkOperation = ''
-    })
+    .catch((error) => {})
+}
+
+export const useGetSeriesReviews = (func: (series: TSeries, reviews: TReview[]) => void) => {
+  const route = useRoute()
+  const slug = '/' + route.params.slug
+  let series = (store.series.series as TSeries[]).find(
+    ({ slug: seriesSlug }) => slug === seriesSlug,
+  )
+
+  const getSeriesReviews = (series: TSeries) => {
+    store.networkOperation = 'get.series.reviews'
+    const storeKey = `series-${series.uuid}`
+
+    if (store[storeKey]) return store[storeKey]
+
+    fetch(`${import.meta.env?.VITE_API_URL}/series/${series.uuid}/reviews`).then(
+      async (response) => {
+        const reviews = await response.json()
+        store[storeKey] = reviews
+        func(series, reviews)
+        store.networkOperation = ''
+      },
+    )
+  }
+
+  if (series) {
+    return getSeriesReviews(series)
+  }
+
+  store.networkOperation = 'get.series.reviews'
+
+  fetch(`${import.meta.env?.VITE_API_URL}/series/${slug}`).then(async (response) => {
+    const series = await response.json()
+    return getSeriesReviews(series)
+  })
+
+  fetch(`${import.meta.env.VITE_API_URL}`)
 }

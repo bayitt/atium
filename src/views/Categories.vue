@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, Suspense, watchEffect, onMounted } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
-import Review from './Review.vue'
-import ReviewSkeleton from './ReviewSkeleton.vue'
+import Review from '../components/Review.vue'
+import ReviewSkeleton from '../components/ReviewSkeleton.vue'
 import { useGetCategories } from '@/api/category'
 import { useGetReviews } from '@/api/review'
 import { TCategory } from '@/types/category'

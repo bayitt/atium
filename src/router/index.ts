@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
-import Categories from '@/components/Categories.vue'
-import Series from '@/components/Series.vue'
-import About from '@/components/About.vue'
+import Categories from '@/views/Categories.vue'
+import Series from '@/views/Series.vue'
+import About from '@/views/About.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +15,7 @@ const router = createRouter({
         { path: '', component: Categories },
         { path: '/category/:slug', component: Categories },
         { path: '/series/:slug?', component: Series },
+        { path: '/series', component: Series },
         { path: '/about', component: About },
       ],
     },

@@ -32,7 +32,5 @@ export const useGetSeries = (
       func(series, pagination)
       store.networkOperation = ''
     })
-    .catch((error) => {
-      store.networkOperation = ''
-    })
+    .catch((error) => {})
 }

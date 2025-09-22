@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 import { useGetSeries } from '@/api/series'
 import { TSeries } from '@/types/series'
 import { TPagination } from '@/types/pagination'
-import SeriesSkeleton from './SeriesSkeleton.vue'
+import SeriesSkeleton from '../components/SeriesSkeleton.vue'
 import { store } from '@/store'
 
 const series = ref<TSeries[] | undefined>()
@@ -35,7 +35,7 @@ onMounted(() => {
 <template>
   <template v-if="series">
     <RouterLink v-for="(item, index) in series" :to="`/series${item.slug}`" :key="index"
-      class="grid grid-cols-12 text-[rgba(0,0,0,0.7)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] pb-8 mb-8">
+      class="grid grid-cols-12 text-[rgba(0,0,0,0.7)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] last-of-type:border-none pb-8 mb-8">
       <div class="col-span-6">
         <p class="capitalize text-base text-black font-semibold mb-2">
           {{ item.name }}
