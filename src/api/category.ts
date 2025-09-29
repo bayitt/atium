@@ -1,21 +1,24 @@
-import { ref } from 'vue'
+import { store } from '@/store'
 
 type TCategory = {
+  uuid: string
   name: string
   slug: string
 }
 
-export const useGetCategories = () => {
-  const categories = ref<TCategory[] | undefined>()
-  const error = ref(null)
+export const useGetCategories = (func: (categories: TCategory[]) => void) => {
+  if (store['categories']) {
+    func(store['categories'])
+    return
+  }
 
-  fetch(`${import.meta.env?.VITE_API_URL ?? ''}/categories`)
+  fetch(`${import.meta.env?.VITE_API_URL}/categories`)
     .then(async (response) => {
-      categories.value = await response.json()
-    })
-    .catch((responseError) => {
-      error.value = responseError
-    })
+      const parsedResponse = await response.json()
+      const categories = [{ name: 'All', slug: '/' }, ...parsedResponse]
 
-  return { categories, error }
+      store['categories'] = categories
+      func(categories)
+    })
+    .catch((responseError) => {})
 }
