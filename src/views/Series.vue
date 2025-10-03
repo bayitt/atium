@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watchEffect, onMounted } from 'vue'
+import { ref, watchEffect, onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useGetSeries } from '@/api/series'
 import { TSeries } from '@/types/series'
@@ -18,17 +18,23 @@ const updateSeries = (fetchedSeries: TSeries[], fetchedPagination: TPagination) 
 
 useGetSeries(1, updateSeries)
 
-onMounted(() => {
-  window.addEventListener("scroll", () => {
-    const screenHeight = window.screen.height
-    const totalHeight = document.body.offsetHeight
+const loadSeries = () => {
+  const screenHeight = window.screen.height
+  const totalHeight = document.body.offsetHeight
 
-    if (totalHeight - (window.scrollY + screenHeight) < 3) {
-      if ((pagination.value?.totalPages - pagination.value?.currentPage) > 0) {
-        useGetSeries(pagination.value.currentPage + 1, updateSeries);
-      }
+  if (totalHeight - (window.scrollY + screenHeight) < 3) {
+    if ((pagination.value?.totalPages - pagination.value?.currentPage) > 0) {
+      useGetSeries(pagination.value.currentPage + 1, updateSeries);
     }
-  })
+  }
+}
+
+onMounted(() => {
+  window.addEventListener("scroll", loadSeries)
+})
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", loadSeries)
 })
 </script>
 

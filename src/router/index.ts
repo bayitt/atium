@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 import Categories from '@/views/Categories.vue'
 import Series from '@/views/Series.vue'
+import SeriesReviews from '@/views/SeriesReviews.vue'
 import About from '@/views/About.vue'
 
 const router = createRouter({
@@ -14,7 +15,7 @@ const router = createRouter({
       children: [
         { path: '', component: Categories },
         { path: '/category/:slug', component: Categories },
-        { path: '/series/:slug?', component: Series },
+        { path: '/series/:slug', component: SeriesReviews },
         { path: '/series', component: Series },
         { path: '/about', component: About },
       ],
