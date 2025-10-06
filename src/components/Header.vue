@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import Button from '@/components/Button.vue'
+import SubscribeDialog from '@/components/SubscribeDialog.vue'
+
+const isDialogOpen = ref(false);
 </script>
 
 <template>
@@ -7,23 +11,8 @@ import Button from '@/components/Button.vue'
     <div class="max-w-[1200px] mx-auto py-4 flex justify-between items-center">
       <p class="text-lg text-[rgba(0,0,0,0.8)] font-semibold">OL</p>
 
-      <div class="flex gap-4">
-        <!-- <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-          />
-        </svg> -->
-        <Button>Subscribe</Button>
-      </div>
+      <Button @click="isDialogOpen = true">Subscribe</Button>
+      <SubscribeDialog :isOpen="isDialogOpen" @handleClose="isDialogOpen = false" />
     </div>
   </nav>
 </template>
