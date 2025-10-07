@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
 import { RouterLink, useRoute, RouterView } from 'vue-router'
-import Header from '../components/Header.vue'
+import Header from '@/components/Header.vue'
+import ReadingList from '@/components/ReadingList.vue'
 
 const route = useRoute()
 const path = ref(route.path)
@@ -41,6 +42,9 @@ watchEffect(() => {
         </div>
 
         <RouterView />
+      </div>
+      <div class="col-span-4">
+        <ReadingList />
       </div>
     </div>
   </section>

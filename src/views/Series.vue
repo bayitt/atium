@@ -41,7 +41,7 @@ onUnmounted(() => {
 <template>
   <template v-if="series">
     <RouterLink v-for="(item, index) in series" :to="`/series${item.slug}`" :key="index"
-      class="grid grid-cols-12 text-[rgba(0,0,0,0.7)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] last-of-type:border-none pb-8 mb-8">
+      class="grid grid-cols-12 text-[rgba(0,0,0,0.75)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] last-of-type:border-none pb-8 mb-8">
       <div class="col-span-6">
         <p class="capitalize text-base text-black font-semibold mb-2">
           {{ item.name }}

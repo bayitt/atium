@@ -69,7 +69,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex gap-5 border-b-[1px] border-transparent text-[14px] text-[rgba(0,0,0,0.7)] mb-5"
+  <div class="flex gap-5 border-b-[1px] border-transparent text-[14px] text-[rgba(0,0,0,0.8)] mb-5"
     :class="categories ? 'border-b-[rgba(0,0,0,0.06)]' : ''">
     <template v-if="categories">
       <RouterLink v-for="(category, index) in categories" :key="index"
