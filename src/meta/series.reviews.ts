@@ -21,7 +21,7 @@ export const useSeriesReviewsMetaInfo = (series: TSeries) => {
       },
       {
         property: 'og:url',
-        content: 'https://library.olamileke.dev/about',
+        content: `https://library.olamileke.dev${series.slug}`,
       },
       {
         property: 'og:image',

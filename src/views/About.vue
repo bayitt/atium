@@ -18,8 +18,9 @@ useHead(aboutMetaInfo)
     for me. I think it's incredible how fantasy authors are able to create entirely new worlds and systems, either blending the 
     real world with their novel concepts or flipping the script entirely and coming up with something completely new. Recently though,
     I've been trying to diversity my interests by dipping my toes into romance. These were words I never thought I would say
-    but eehh I guess they aren't so bad, especially when the story is incorporated into other overarching themes - Francine Rivers' Mark 
-    of the Lion series does this excellently. <br /><br />
+    but eehh I guess they are not so unpalatable, especially when the story is incorporated into other overarching themes beyond romance - 
+    Francine Rivers' Mark of the Lion series does this excellently. I could just roll my eyes at the romance bits because of how
+    good the overall story was. <br /><br />
 
     My favorite authors are Brandon Sanderson (Stormlight Archive, Mistborn), Ted Dekker (The Circle Trilogy, Thr3e) and John Grisham (The Rainmaker, The Testament).
     I also really enjoy books that weave in themes of faith and christianity. Books that are able to draw allegories which reveal deeper faith based messages.

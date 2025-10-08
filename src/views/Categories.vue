@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, Suspense, watchEffect, onMounted, onUnmounted } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
+import { useHead } from '@unhead/vue'
 import Review from '../components/Review.vue'
 import ReviewSkeleton from '../components/ReviewSkeleton.vue'
 import { useGetCategories } from '@/api/category'
@@ -9,6 +10,9 @@ import { TCategory } from '@/types/category'
 import { TReview } from '@/types/review'
 import { TPagination } from '@/types/pagination';
 import { store } from '@/store';
+import { useReviewsMetaInfo } from '@/meta/reviews'
+
+const metaFunc = useHead(useReviewsMetaInfo(undefined as any))
 
 const categories = ref<TCategory[] | undefined>()
 const route = useRoute()
@@ -35,9 +39,11 @@ watchEffect(
       if (!category) return
       reviews.value = undefined
       useGetReviews(1, updateReviews, category.uuid)
+      metaFunc.patch(useReviewsMetaInfo(category))
     } else {
       reviews.value = undefined
       useGetReviews(1, updateReviews)
+      metaFunc.patch(useReviewsMetaInfo(null as any))
     }
   }
 )
