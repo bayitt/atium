@@ -65,10 +65,14 @@ export const useGetSeriesReviews = (func: (series: TSeries, reviews: TReview[]) 
   )
 
   const getSeriesReviews = (series: TSeries) => {
-    store.networkOperation = 'get.series.reviews'
     const storeKey = `series-${series.uuid}`
 
-    if (store[storeKey]) return store[storeKey]
+    if (store[storeKey]) {
+      func(series, store[storeKey])
+      return
+    }
+
+    store.networkOperation = 'get.series.reviews'
 
     fetch(`${import.meta.env?.VITE_API_URL}/series/${series.uuid}/reviews`).then(
       async (response) => {
@@ -86,10 +90,8 @@ export const useGetSeriesReviews = (func: (series: TSeries, reviews: TReview[]) 
 
   store.networkOperation = 'get.series.reviews'
 
-  fetch(`${import.meta.env?.VITE_API_URL}/series/${slug}`).then(async (response) => {
+  fetch(`${import.meta.env?.VITE_API_URL}/series${slug}`).then(async (response) => {
     const series = await response.json()
     return getSeriesReviews(series)
   })
-
-  fetch(`${import.meta.env.VITE_API_URL}`)
 }

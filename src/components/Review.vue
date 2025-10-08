@@ -7,7 +7,7 @@ defineProps<Omit<TReview, "content">>()
 
 <template>
   <RouterLink :to="slug"
-    class="grid grid-cols-12 text-[rgba(0,0,0,0.7)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] last-of-type:border-none pb-8">
+    class="grid grid-cols-12 text-[rgba(0,0,0,0.75)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] last-of-type:border-none pb-8">
     <div class="col-span-8 pr-5">
       <div class="flex gap-2 mb-4">
         <RouterLink v-for="(category, index) in categories"
@@ -32,7 +32,7 @@ defineProps<Omit<TReview, "content">>()
       </p>
     </div>
     <div class="col-span-4 flex items-center">
-      <img :src="image" class="object-cover object-center rounded-md w-full h-[200px]" />
+      <img :src="image" class="object-cover object-center rounded w-full h-[200px]" />
     </div>
   </RouterLink>
 </template>
