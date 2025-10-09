@@ -25,8 +25,8 @@ useGetReview(updateReview)
             <img :src="review.image" class="h-[300px] w-full object-contain" />
           </div>
           <div class="col-span-9 pl-6 pr-4 text-[rgba(0,0,0,0.75)]">
-            <div class="pb-3 mb-3 border-b-[1px] border-b-[rgba(0,0,0,0.06)]">
-              <div class="flex gap-2 mb-3 text-black">
+            <div class="pb-4 mb-4 border-dashed border-b-[2px] border-b-[rgba(0,0,0,0.3)]">
+              <div class="flex gap-2 mb-3">
                 <RouterLink
                   v-for="(category, index) in review.categories"
                   class="text-[0.85rem] capitalize underline decoration-double"
@@ -34,12 +34,12 @@ useGetReview(updateReview)
                   :to="`/category${category.slug}`"
                   >{{ category.name }}</RouterLink
                 >
-                |
-                <p v-if="review.series" class="text-[0.84rem] relative top-[1.5px] right-[2px]">
+                <p v-if="review.series" class="text-[0.84rem] relative top-[1.5px] right-[1px]">
+                  |
                   Published in
                   <RouterLink
                     :to="`/series${review.series.slug}`"
-                    class="capitalize underline decoration-double text-black font-medium"
+                    class="capitalize text-black font-medium"
                     >{{ review.series.name }}
                   </RouterLink>
                 </p>
