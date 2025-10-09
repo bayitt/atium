@@ -62,17 +62,16 @@ onUnmounted(() => {
         <p class="text-xs uppercase font-semibold">SERIES BY {{ item.author }}</p>
       </div>
       <div
-        class="col-span-6 flex flex-wrap gap-3"
+        class="col-span-6 flex flex-wrap gap-1"
         :class="item.images.length === 1 ? 'pl-32' : 'pl-6'"
       >
         <img
           v-for="(image, index) in item.images"
           :key="index"
           :src="image"
-          class="object-cover object-center"
+          class="object-contain"
           :style="{
-            width: `calc((100% / ${item.images.length <= 2 ? item.images.length : Math.ceil(item.images.length / 2)}) - 12px)`,
-            height: item.images.length === 1 ? '200px' : '120px',
+            height: item.images.length === 1 ? '180px' : '120px',
           }"
         />
       </div>

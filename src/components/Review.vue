@@ -15,7 +15,7 @@ defineProps<Omit<TReview, "content">>()
           :to="`/category${category.slug}`">{{ category.name }}</RouterLink>
       </div>
       <p class="capitalize text-[1.05rem] font-semibold mb-2 text-black">{{ title }}</p>
-      <p class="text-[0.9rem]/6 mb-4">{{ excerpt }}</p>
+      <p class="text-[0.9rem]/6 mb-4" v-html="excerpt + '...'" />
       <p v-if="series" class="text-[0.84rem] mb-4">
         Published in
         <RouterLink :to="`/series${series.slug}`"
@@ -32,7 +32,7 @@ defineProps<Omit<TReview, "content">>()
       </p>
     </div>
     <div class="col-span-4 flex items-center">
-      <img :src="image" class="object-cover object-center rounded w-full h-[200px]" />
+      <img :src="image" class="object-contain rounded w-full h-[200px]" />
     </div>
   </RouterLink>
 </template>

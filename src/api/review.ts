@@ -95,3 +95,22 @@ export const useGetSeriesReviews = (func: (series: TSeries, reviews: TReview[]) 
     return getSeriesReviews(series)
   })
 }
+
+export const useGetReview = (func: (review: TReview) => void) => {
+  const route = useRoute()
+  const slug = '/' + route.params.slug
+  const storeKey = `review-${slug}`
+
+  if (store[storeKey]) {
+    func(store[storeKey])
+    return
+  }
+
+  fetch(`${import.meta.env?.VITE_API_URL}/reviews${slug}`)
+    .then(async (response) => {
+      const review = await response.json()
+      store[storeKey] = review
+      func(review)
+    })
+    .catch(() => {})
+}

@@ -3,7 +3,7 @@
 
 <template>
   <button
-    class="outline-none border-none p-3 text-sm rounded cursor-pointer bg-black text-lg text-white"
+    class="outline-none border-none p-3 text-sm rounded-sm cursor-pointer bg-black text-lg text-white"
   >
     <slot />
   </button>
