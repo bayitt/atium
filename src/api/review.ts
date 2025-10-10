@@ -114,3 +114,30 @@ export const useGetReview = (func: (review: TReview) => void) => {
     })
     .catch(() => {})
 }
+
+export const useGetRelatedSeriesReviews = (
+  review_uuid: string,
+  series_uuid: string,
+  func: (reviews: TReview[]) => void,
+) => {
+  const storeKey = `review-${review_uuid}`
+  const review = store[storeKey]
+
+  if (review && review['related_series_reviews']) {
+    func(review['related_series_reviews'])
+    return
+  }
+
+  fetch(`${import.meta.env?.VITE_API_URL}/series/${series_uuid}/reviews`)
+    .then(async (response) => {
+      const reviews = await response.json()
+      if (!store[storeKey]) {
+        store[storeKey] = { related_series_reviews: reviews }
+      } else {
+        store[storeKey] = { ...store[storeKey], related_series_reviews: reviews }
+      }
+
+      func(reviews)
+    })
+    .catch(() => {})
+}

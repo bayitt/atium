@@ -31,8 +31,8 @@ useGetReview(updateReview)
             <img :src="review.image" class="h-[300px] w-full object-contain" />
           </div>
           <div class="col-span-8 text-[rgba(0,0,0,0.75)]">
-            <div class="pb-4 mb-4 border-b border-b-[2px] border-b-[rgba(0,0,0,0.15)]">
-              <div class="flex gap-2 mb-3">
+            <div class="mb-7">
+              <div class="flex gap-2 mb-4">
                 <RouterLink v-for="(category, index) in review.categories"
                   class="text-[0.85rem] capitalize underline decoration-double" :key="index"
                   :to="`/category${category.slug}`">{{ category.name }}</RouterLink>
@@ -44,32 +44,39 @@ useGetReview(updateReview)
                   </RouterLink>
                 </p>
               </div>
-              <p class="text-2xl capitalize font-semibold mb-4">{{ review.title }}</p>
-              <p class="text-xs uppercase font-semibold">
-                {{ parseDate(review.created_at) }} | BOOK BY {{ review.author }}
+              <p class="text-xl capitalize p-5 text-white bg-black w-fit mb-5">{{ review.title }}</p>
+              <p class="text-xs uppercase text-[rgba(0,0,0,0.9)]">
+                {{ parseDate(review.created_at) }} | BOOK BY {{ review.author }} | REVIEW BY OLAMILEKE FAMBEGBE
               </p>
             </div>
-            <div v-html="review.content" class="text-[0.96rem]/6 [text-[rgba(0,0,0,0.85)]" />
+            <div v-html="review.content" class="text-[0.96rem]/6.25 [text-[rgba(0,0,0,0.85)]" />
           </div>
           <div class="col-span-1 sticky top-[10px] flex flex-col pl-7 gap-5 h-fit">
-            <div class="size-8 flex justify-center items-center rounded-full border border-[rgba(0,0,0,0.7)]">
+            <div class="size-8 flex justify-center items-center rounded-full cursor-pointer border border-[rgba(0,0,0,0.95)]">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="rgba(0,0,0,0.8)" class="size-4">
+                stroke="black" class="size-3.5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+              </svg>
+            </div>
+            <div class="size-8 flex justify-center items-center rounded-full cursor-pointer border border-[rgba(0,0,0,0.95)]">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="rgba(0,0,0,0.9)" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
               </svg>
             </div>
-            <div class="size-8 flex justify-center items-center rounded-full border border-[rgba(0,0,0,0.7)]">
-              <FontAwesomeIcon icon="fa-brands fa-facebook-f" style="color: rgba(0,0,0,.6)" size="sm" />
+            <div class="size-8 flex justify-center items-center rounded-full cursor-pointer border border-[rgba(0,0,0,0.95)]">
+              <FontAwesomeIcon icon="fa-brands fa-facebook-f" style="color: rgba(0,0,0,.5)" size="sm" />
             </div>
-            <div class="size-8 flex justify-center items-center rounded-full border border-[rgba(0,0,0,0.7)]">
-              <FontAwesomeIcon icon="fa-brands fa-whatsapp" style="color: rgba(0,0,0,.6)" size="1x" />
+            <div class="size-8 flex justify-center items-center rounded-full cursor-pointer border border-[rgba(0,0,0,0.95)]">
+              <FontAwesomeIcon icon="fa-brands fa-whatsapp" style="color: rgba(0,0,0,.7)" size="1x" />
             </div>
-            <div class="size-8 flex justify-center items-center rounded-full border border-[rgba(0,0,0,0.7)]">
-              <FontAwesomeIcon icon="fa-brands fa-x-twitter" style="color: rgba(0,0,0,.6)" size="sm" />
+            <div class="size-8 flex justify-center items-center rounded-full cursor-pointer border border-[rgba(0,0,0,0.95)]">
+              <FontAwesomeIcon icon="fa-brands fa-x-twitter" style="color: rgba(0,0,0,.8)" size="sm" />
             </div>
-            <div class="size-8 flex justify-center items-center rounded-full border border-[rgba(0,0,0,0.7)]">
-              <FontAwesomeIcon icon="fa-brands fa-linkedin-in" style="color: rgba(0,0,0,.6)" size="sm" />
+            <div class="size-8 flex justify-center items-center rounded-full cursor-pointer border border-[rgba(0,0,0,0.95)]">
+              <FontAwesomeIcon icon="fa-brands fa-linkedin-in" style="color: rgba(0,0,0,.65)" size="sm" />
             </div>
           </div>
         </div>
