@@ -16,25 +16,6 @@ watchEffect(() => {
   path.value = route.path
 })
 
-const handleReadingListPosition = () => {
-  if (!readingList?.value)
-    return
-
-  if (window.scrollY > 76 ) {
-   readingList.value.style.paddingTop = "0px";
-  }
-  else
-   readingList.value.style.paddingTop = "76px";
-}
-
-onMounted(() => {
-  window.addEventListener("scroll", handleReadingListPosition)
-})
-
-onUnmounted(() => {
-  window.removeEventListener("scroll", handleReadingListPosition)
-})
-
 </script>
 
 <template>
@@ -55,7 +36,7 @@ onUnmounted(() => {
 
         <RouterView />
       </div>
-      <div class="fixed top-0 pt-[76px] transition-[padding] duration-700 ease-in col-span-4 -z-10" style="right: calc((100vw - 1200px)/2)" ref="readingList">
+      <div class="sticky top-0 h-fit transition-[padding] duration-700 ease-in col-span-4 -z-10" style="right: calc((100vw - 1200px)/2)" ref="readingList">
         <ReadingList />
       </div>
     </div>
