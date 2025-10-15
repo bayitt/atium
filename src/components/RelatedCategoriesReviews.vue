@@ -1,25 +1,23 @@
 <script lang="ts" setup>
 import { ref, watchEffect } from 'vue'
-import { RouterLink } from 'vue-router'
-import { useGetRelatedSeriesReviews } from '@/api/review'
+import { TCategory } from '@/types/category'
 import { TReview } from '@/types/review'
-import { TSeries } from '@/types/series'
+import { useGetRelatedCategoriesReviews } from '@/api/review'
 import Review from '@/components/Review.vue'
 import ReviewSkeleton from '@/components/ReviewSkeleton.vue'
 
 const emit = defineEmits<{
   displayMore: [more: boolean]
 }>()
-const { review_slug, series } = defineProps<{
+const { review_slug, categories } = defineProps<{
   review_slug: string
-  series: Pick<TSeries, 'uuid' | 'name'>
+  categories: Pick<TCategory, 'name' | 'uuid'>
 }>()
-const reviews = ref<TReview | undefined>()
 
-const updateReviews = (
-  fetchedReviews: Pick<TReview, 'uuid' | 'title' | 'image' | 'author' | 'created_at'>,
-) => {
-  const parsedReviews = fetchedReviews.filter(({ slug }) => review_slug != slug).reverse()
+const reviews = ref<TReview[] | undefined>()
+
+const updateReviews = (fetchedReviews: TReview[]) => {
+  const parsedReviews = fetchedReviews.filter(({ slug }) => review_slug != slug)
   reviews.value = parsedReviews
 
   emit('displayMore', parsedReviews.length > 0)
@@ -27,7 +25,11 @@ const updateReviews = (
 
 watchEffect(() => {
   reviews.value = undefined
-  useGetRelatedSeriesReviews(review_slug, series.uuid, updateReviews)
+  useGetRelatedCategoriesReviews(
+    review_slug,
+    categories.map(({ uuid }) => uuid),
+    updateReviews,
+  )
 })
 </script>
 
@@ -35,7 +37,10 @@ watchEffect(() => {
   <section class="bg-[rgba(0,0,0,0.01)] text-[rgba(0,0,0,0.75)] p-18">
     <div class="max-w-[750px] mx-auto">
       <p class="text-lg text-center font-semibold mb-12">
-        More from <span class="capitalize">{{ series.name }}</span>
+        More from
+        <span class="capitalize" v-for="(category, index) in categories" :key="index"
+          >{{ category.name }}<i v-if="index < categories.length - 1">, </i>
+        </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
