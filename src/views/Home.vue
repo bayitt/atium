@@ -19,12 +19,12 @@ watchEffect(() => {
 <template>
   <Header />
   <section>
-    <div class="w-[90%] max-w-[1200px] mx-auto grid grid-cols-12">
+    <div class="sm:w-[90%] max-w-[1200px] mx-auto grid grid-cols-12">
       <div
-        class="col-span-12 lg:col-span-8 py-5 lg:border-r-[1px] lg:border-r-[rgba(0,0,0,0.05)] lg:pr-[15%]"
+        class="col-span-12 lg:col-span-8 pb-10 !sm:py-5 lg:border-r-[1px] lg:border-r-[rgba(0,0,0,0.05)] lg:pr-[15%]"
         style="min-height: calc(100vh - 56px)"
       >
-        <div class="flex gap-5 text-[14px] text-[rgba(0,0,0,0.8)] mb-8">
+        <div class="hidden lg:flex gap-5 text-[14px] text-[rgba(0,0,0,0.8)] mb-8">
           <RouterLink
             v-for="(route, index) in routes"
             :key="index"

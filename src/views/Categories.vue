@@ -70,15 +70,15 @@ onUnmounted(() => {
 
 <template>
   <div
-    class="flex flex-wrap gap-5 sm:border-b-[1px] border-transparent text-[14px] text-[rgba(0,0,0,0.8)] mb-7 sm:mb-5"
-    :class="categories ? 'sm:border-b-[rgba(0,0,0,0.06)]' : ''"
+    class="px-[6%] sm:px-0 pt-5 sm:pt-0 flex flex-wrap gap-5 lg:border-b-[1px] border-transparent text-[14px] text-[rgba(0,0,0,0.8)] mb-7 sm:mb-7 sm:mt-3 lg:mb-5 lg:mt-0"
+    :class="categories ? 'lg:border-b-[rgba(0,0,0,0.06)]' : ''"
   >
     <template v-if="categories">
       <RouterLink
         v-for="(category, index) in categories"
         :key="index"
         :to="index === 0 ? category.slug : `/category${category.slug}`"
-        class="transition-all duration-500 ease-in capitalize pb-2 sm:pb-4 px-2 border-b-[1px] border-b-transparent"
+        class="transition-all duration-500 ease-in capitalize pb-2 lg:pb-4 px-1 sm:px-2 border-b-[1px] border-b-transparent"
         :class="
           '/' + route.params?.slug === category.slug ||
           (!route.params?.slug && category.slug === '/')

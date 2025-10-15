@@ -47,9 +47,9 @@ onUnmounted(() => {
       v-for="(item, index) in series"
       :to="`/series${item.slug}`"
       :key="index"
-      class="grid grid-cols-12 text-[rgba(0,0,0,0.75)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] last-of-type:border-none pb-8 mb-8"
+      class="flex flex-col-reverse sm:grid grid-cols-12 text-[rgba(0,0,0,0.75)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] last-of-type:border-none pb-8 mb-8 last-of-type:mb-0"
     >
-      <div class="col-span-6">
+      <div class="sm:col-span-6 px-[6%] sm:px-0">
         <p class="capitalize text-base text-black font-semibold mb-2">
           {{ item.name }}
         </p>
@@ -62,8 +62,8 @@ onUnmounted(() => {
         <p class="text-xs uppercase font-semibold">SERIES BY {{ item.author }}</p>
       </div>
       <div
-        class="col-span-6 flex flex-wrap gap-1"
-        :class="item.images.length === 1 ? 'pl-32' : 'pl-6'"
+        class="sm:col-span-6 flex flex-wrap px-[6%] sm:px-0 gap-3 sm:gap-3 justify-center items-center"
+        :class="item.images.length === 1 ? 'sm:pl-32' : 'sm:pl-6'"
       >
         <img
           v-for="(image, index) in item.images"
@@ -71,7 +71,7 @@ onUnmounted(() => {
           :src="image"
           class="object-contain"
           :style="{
-            height: item.images.length === 1 ? '180px' : '120px',
+            height: item.images.length === 1 ? '180px' : '145px',
           }"
         />
       </div>
