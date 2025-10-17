@@ -38,9 +38,9 @@ onMounted(() => {
     <Review v-for="(review, index) in reviews" :key="index" v-bind="review" />
   </div>
   <div class="flex flex-col gap-8" v-else>
-    <div class="p-8 pt-1">
+    <div class="p-8 sm:pt-1">
       <p class="h-5 w-60 bg-[#ddd] animate-pulse mb-4" />
-      <p class="h-8 w-full bg-[#ddd] animate-pulse mb-4" />
+      <p class="h-16 w-full bg-[#ddd] animate-pulse mb-4" />
       <p class="h-4 w-40 bg-[#ddd] animate-pulse" />
     </div>
     <ReviewSkeleton v-for="n in 3" :key="n" />

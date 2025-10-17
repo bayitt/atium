@@ -70,8 +70,8 @@ onUnmounted(() => {
 
 <template>
   <div
-    class="px-[6%] sm:px-0 pt-5 sm:pt-0 flex flex-wrap gap-5 lg:border-b-[1px] border-transparent text-[14px] text-[rgba(0,0,0,0.8)] mb-7 sm:mb-7 sm:mt-3 lg:mb-5 lg:mt-0"
-    :class="categories ? 'lg:border-b-[rgba(0,0,0,0.06)]' : ''"
+    class="px-[6%] sm:px-0 pt-5 sm:pt-0 flex flex-wrap gap-5 border-transparent text-[15px] sm:text-[14px] text-[rgba(0,0,0,0.8)] mb-7 sm:mb-7 sm:mt-3 lg:mb-5 lg:mt-0"
+    :class="categories ? 'llg:border-b-[1px] g:border-b-[rgba(0,0,0,0.06)]' : ''"
   >
     <template v-if="categories">
       <RouterLink
@@ -90,7 +90,7 @@ onUnmounted(() => {
       </RouterLink>
     </template>
     <template v-else>
-      <div v-for="n in 5" :key="n" class="pb-4 px-2 animate-pulse bg-[#ddd] w-20" />
+      <div v-for="n in 5" :key="n" class="pb-4 px-2 animate-pulse bg-[#ddd] w-22" />
     </template>
   </div>
   <div class="flex flex-col gap-8">

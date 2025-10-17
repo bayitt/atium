@@ -27,11 +27,11 @@ watchEffect(() => {
 <template>
   <div
     class="lg:hidden fixed top-0 right-0 w-screen h-screen bg-[rgba(0,0,0,0.5)]"
-    :class="isOpen ? 'z-20 opacity-100' : '-z-10 opacity-0'"
+    :class="isOpen ? 'z-20 opacity-100' : '-z-10 opacity-0 invisible'"
     @click="$emit('handleClose')"
   >
     <div
-      class="absolute top-0 w-[80%] sm:w-[50%] h-full bg-white pt-[150px] pl-[30px] sm:pl-[40px] transition-all duration-500 ease-in"
+      class="absolute top-0 w-[80%] sm:w-[50%] h-full bg-white pt-[150px] pl-[30px] sm:pl-[40px] transition-all duration-700 ease-in"
       :class="isOpen ? 'right-0' : '-right-[80%] sm:-right-[50%]'"
       @click.stop=""
     >

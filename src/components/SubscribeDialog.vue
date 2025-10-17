@@ -36,7 +36,7 @@ const subscribe = () => {
 <template>
   <div
     class="fixed top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,0.5)] transition-all duration-500 ease-in flex justify-center items-center"
-    :class="props.isOpen ? 'z-999 opacity-100' : '-z-10 opacity-0'"
+    :class="props.isOpen ? 'z-999 opacity-100' : '-z-10 opacity-0 invisible'"
     @click="$emit('handleClose')"
   >
     <form
