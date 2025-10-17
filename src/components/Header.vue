@@ -3,9 +3,11 @@ import { ref } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import Button from '@/components/Button.vue'
 import SubscribeDialog from '@/components/SubscribeDialog.vue'
+import Sidebar from '@/components/Sidebar.vue'
 
 const route = useRoute()
 const isDialogOpen = ref(false)
+const isSidebarOpen = ref(false)
 </script>
 
 <template>
@@ -20,24 +22,29 @@ const isDialogOpen = ref(false)
         />
       </RouterLink>
 
-      <Button @click="isDialogOpen = true" class="hidden lg:inline">Subscribe</Button>
-      <div class="lg:hidden">
+      <Button @click="isDialogOpen = true" class="hidden lg:inline lg:z-0">Subscribe</Button>
+      <div class="lg:hidden z-50" @click="isSidebarOpen = !isSidebarOpen">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="relative top-[2px] w-[33px] h-[33px] sm:w-[28px] sm:h-[28px]"
+          class="relative top-[2px] w-[29px] h-[29px] sm:w-[28px] sm:h-[28px]"
         >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"
           />
         </svg>
       </div>
       <SubscribeDialog :isOpen="isDialogOpen" @handleClose="isDialogOpen = false" />
+      <Sidebar
+        :isOpen="isSidebarOpen"
+        @handleClose="isSidebarOpen = false"
+        @handleSubscribe="isDialogOpen = true"
+      />
     </div>
   </nav>
 </template>
