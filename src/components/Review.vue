@@ -48,7 +48,9 @@ defineProps<Omit<TReview, 'content'>>()
         {{ parseDate(created_at) }} | BOOK BY {{ author }}
       </p>
     </div>
-    <div class="relative sm:col-span-4 flex items-center mb-5 sm:mb-0">
+    <div
+      class="relative sm:col-span-4 flex items-center mb-5 sm:mb-0 sm:pl-[45%] md:pl-[53%] lg:pl-0"
+    >
       <img :src="image" class="object-contain rounded w-full h-[250px] sm:h-[200px]" />
       <div
         class="sm:hidden absolute left-0 bottom-0 px-[6%] py-4 text-white w-full bg-[rgba(0,0,0,0.4)]"

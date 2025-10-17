@@ -44,7 +44,7 @@ const subscribe = () => {
       @click.stop=""
       @submit.prevent="subscribe"
     >
-      <p class="mb-3 text-[1.01rem]/6 text-[rgba(0,0,0,0.95)] font-medium">
+      <p class="mb-3 text-[0.95rem]/6 text-[rgba(0,0,0,0.95)] font-medium">
         Receive updates in your inbox right away when new reviews are published
       </p>
       <div class="mb-4">
