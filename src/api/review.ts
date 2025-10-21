@@ -4,7 +4,7 @@ import type { TPagination } from '@/types/pagination'
 import { store } from '@/store'
 import type { TSeries } from '@/types/series'
 
-const REVIEW_COUNT = 3
+const REVIEW_COUNT = 10
 
 export const useGetReviews = (
   page: number,
