@@ -44,39 +44,47 @@ const displayMore = (more: boolean) => {
   <Header />
   <template v-if="review">
     <section>
-      <div
-        class="w-[88%] sm:w-[90%] max-w-[1200px] mx-auto flex flex-col lg:grid grid-cols-12 py-8"
-      >
-        <div class="col-span-1 sticky top-[10px] flex flex-col gap-5 h-fit">
+      <div class="max-w-[1200px] mx-auto flex flex-col lg:grid grid-cols-12 py-1 lg:py-8">
+        <div class="hidden lg:flex flex-col gap-5 col-span-1 sticky top-[10px] h-fit">
           <Share :title="review.title" />
         </div>
-        <div class="col-span-8 text-[rgba(0,0,0,0.8)]">
-          <div class="mb-7 text-[rgba(0,0,0,0.85)] lg:w-[105%]">
-            <div class="p-10 bg-[rgba(0,0,0,0.01)] mb-4 flex justify-between items-center">
-              <div class="w-3/5">
-                <p class="capitalize text-black font-semibold text-2xl/9 mb-2">
-                  {{ review.title }}
+        <div class="col-span-11 text-[rgba(0,0,0,0.85)]">
+          <div class="mb-7 text-[rgba(0,0,0,0.85)] lg:w-full">
+            <div
+              class="px-[6%] sm:px-[5%] py-10 lg:pl-15 lg:pr-15 bg-[rgba(0,0,0,0.01)] mb-4 flex flex-col-reverse items-center sm:flex-row justify-between items-center"
+            >
+              <div class="sm:w-[70%] lg:w-3/5">
+                <p
+                  class="capitalize text-black font-semibold text-center sm:text-left text-xl md:text-2xl/9 lg:text-xl/8 mb-3 lg:mb-2"
+                >
+                  A Review Of <i class="mr-1">{{ review.title }}</i> By Olamileke Fambegbe
                 </p>
-                <p class="text-[0.95rem] text-[rgba(0,0,0,0.77)]">
+                <p
+                  class="text-[17px] sm:text-[1rem] md:text-[0.95rem] text-[rgba(0,0,0,0.85)] lg:text-[rgba(0,0,0,0.77)] text-center sm:text-left"
+                >
                   Book by <span class="capitalize">{{ review.author }}</span>
                 </p>
               </div>
 
-              <div class="w-2/5 flex justify-end items-center gap-2">
-                <p class="text-[0.87rem] h-fit">Review by Olamileke</p>
-                <p class="l">|</p>
-                <p class="text-[0.87rem] h-fit">{{ getReadingTime() }} min read</p>
-              </div>
+              <img
+                :src="review.image"
+                class="h-[250px] sm:h-[200px] mb-5 sm:mb-0 sm:ml-auto object-contain"
+              />
             </div>
-            <div class="flex gap-2 text-[rgba(0,0,0,0.8)]">
+            <div
+              class="relative left-[6%] sm:left-[5%] lg:left-0 w-[88%] sm:w-[90%] flex flex-wrap gap-2 text-[rgba(0,0,0,0.8)]"
+            >
               <RouterLink
                 v-for="(category, index) in review.categories"
-                class="text-[0.85rem] capitalize underline decoration-double"
+                class="text-[16px] md:text-[0.94rem] capitalize underline decoration-double"
                 :key="index"
                 :to="`/category${category.slug}`"
                 >{{ category.name }}</RouterLink
               >
-              <p v-if="review.series" class="text-[0.84rem] relative top-[1.5px] right-[1px]">
+              <p
+                v-if="review.series"
+                class="text-[16px] md:text-[0.93rem] relative top-[1.5px] right-[1px]"
+              >
                 | Published in
                 <RouterLink
                   :to="`/series${review.series.slug}`"
@@ -85,16 +93,19 @@ const displayMore = (more: boolean) => {
                 >
               </p>
               <p
-                class="text-[0.82rem] relative right-[4px]"
+                class="text-[16px] md:text-[0.91rem] relative right-[4px]"
                 :class="review.series ? 'top-[2px]' : 'top-px'"
               >
                 | {{ parseDate(review.created_at) }}
               </p>
             </div>
           </div>
-          <div v-html="review.content" class="text-base/7.5 lg:w-[105%] mb-14" />
+          <div
+            v-html="review.content"
+            class="text-[18px]/7.5 sm:text-base/7.5 relative left-[6%] sm:left-[5%] lg:left-0 w-[88%] sm:w-[90%] lg:w-full mb-14"
+          />
         </div>
-        <div class="hidden lg:block col-span-3 sticky top-[10px] h-fit">
+        <div class="hidden col-span-3 sticky top-[10px] h-fit">
           <img :src="review.image" class="h-[300px] ml-[50px] w-full object-contain" />
         </div>
       </div>

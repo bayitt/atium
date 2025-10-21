@@ -48,7 +48,7 @@ onUnmounted(() => {
         v-for="(item, index) in series"
         :to="`/series${item.slug}`"
         :key="index"
-        class="flex flex-col-reverse sm:grid grid-cols-12 text-[rgba(0,0,0,0.75)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] last-of-type:border-none pb-8 mb-8 sm:mb-8 last-of-type:mb-0"
+        class="flex flex-col-reverse sm:grid grid-cols-12 text-[rgba(0,0,0,0.8)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] last-of-type:border-none pb-8 mb-8 sm:mb-8 last-of-type:mb-0"
       >
         <div class="sm:col-span-6 px-[6%] sm:px-0">
           <p class="hidden sm:block capitalize text-lg sm:text-base text-black font-semibold mb-2">

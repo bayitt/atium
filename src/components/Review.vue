@@ -8,7 +8,7 @@ defineProps<Omit<TReview, 'content'>>()
 <template>
   <RouterLink
     :to="slug"
-    class="flex flex-col-reverse sm:grid grid-cols-12 text-[rgba(0,0,0,0.75)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] last-of-type:border-none pb-8"
+    class="flex flex-col-reverse sm:grid grid-cols-12 text-[rgba(0,0,0,0.8)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] last-of-type:border-none pb-8"
   >
     <div class="px-[6%] sm:px-0 sm:col-span-8 lg:pr-5">
       <div class="flex gap-2 mb-4">

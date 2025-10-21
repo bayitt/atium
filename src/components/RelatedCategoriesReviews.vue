@@ -34,7 +34,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <section class="bg-[rgba(0,0,0,0.01)] text-[rgba(0,0,0,0.75)] p-18">
+  <section class="bg-[rgba(0,0,0,0.01)] text-[rgba(0,0,0,0.85)] p-18">
     <div class="max-w-[750px] mx-auto">
       <p class="text-lg text-center font-semibold mb-12">
         More from

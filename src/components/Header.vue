@@ -14,7 +14,7 @@ const isSidebarOpen = ref(false)
   <nav
     class="sticky lg:static top-0 bg-white z-10 lg:z-0 lg:border-b-[1px] border-b-[rgba(0,0,0,0.05)]"
   >
-    <div class="w-[88%] sm:w-[90%] max-w-[1200px] mx-auto py-4 flex justify-between items-center">
+    <div class="w-[88%] sm:w-[90%] max-w-[1200px] mx-auto py-3 flex justify-between items-center">
       <RouterLink to="/" class="relative">
         <img
           src="https://res.cloudinary.com/olamileke/image/upload/c_thumb,w_200,g_face/v1760027186/chequer_dev/ol-high-resolution-logo_fmyams.png"

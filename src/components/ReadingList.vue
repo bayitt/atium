@@ -26,9 +26,9 @@ useGetReadingList(updateReadingListItems)
 </script>
 
 <template>
-  <div class="pl-10 pt-9 text-[rgba(0,0,0,0.85)]">
+  <div class="pl-10 pt-9 text-[rgba(0,0,0,0.9)]">
     <p
-      class="text-[15px] underline decoration-double lg:no-underline capitalize mb-6 font-semibold"
+      class="text-md lg:text-[15px] underline decoration-double lg:no-underline capitalize mb-4 lg:mb-6 font-semibold"
     >
       My Bookshelf
     </p>
@@ -36,14 +36,14 @@ useGetReadingList(updateReadingListItems)
     <template v-if="readingListItems">
       <div
         v-for="(item, index) in readingListItems"
-        class="relative flex flex-reverse gap-4 text-[rgba(0,0,0,0.8)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] last-of-type:border-none pb-4 mb-4"
+        class="relative flex flex-reverse gap-4 text-[rgba(0,0,0,0.8)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] last-of-type:border-none pb-3 lg:pb-4 mb-3 lg:mb-4"
       >
         <div class="flex flex-col w-5/7" :class="item.status ? '' : 'justify-center'">
-          <p class="text-[15px] sm:text-md lg:text-[0.92rem] capitalize font-semibold mb-2">
+          <p class="text-md lg:text-[0.92rem] capitalize font-semibold mb-1 lg:mb-2">
             {{ item.title }}
           </p>
           <p
-            class="text-[0.85rem] sm:text-[text-0.95rem] lg:text-sm"
+            class="text-[0.95rem] lg:text-[0.85rem] sm:text-[text-0.95rem] lg:text-sm"
             :class="item.status ? 'mb-2' : ''"
           >
             Book by <span class="capitalize">{{ item.author }}</span>
@@ -55,10 +55,7 @@ useGetReadingList(updateReadingListItems)
             CURRENT READ
           </p>
         </div>
-        <img
-          :src="item.image"
-          class="w-2/7 object-contain rounded h-[80px] sm:h-[100px] lg:h-[80px] translate-x-[25%]"
-        />
+        <img :src="item.image" class="w-2/7 object-contain h-[80px] translate-x-[25%]" />
       </div>
     </template>
     <template v-else>
