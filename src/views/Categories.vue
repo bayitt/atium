@@ -10,7 +10,7 @@ import { TCategory } from '@/types/category'
 import { TReview } from '@/types/review'
 import { TPagination } from '@/types/pagination'
 import { store } from '@/store'
-import { useReviewsMetaInfo } from '@/meta/reviews'
+import { useReviewsMetaInfo } from '@/meta/review'
 
 const metaFunc = useHead(useReviewsMetaInfo(undefined as any))
 

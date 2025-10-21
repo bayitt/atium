@@ -14,7 +14,7 @@ defineProps<Omit<TReview, 'content'>>()
       <div class="flex gap-2 mb-4">
         <RouterLink
           v-for="(category, index) in categories"
-          class="text-base sm:text-[0.85rem] capitalize underline decoration-double text-[rgba(0,0,0,0.75)]"
+          class="text-base sm:text-[0.85rem] capitalize underline decoration-double text-[rgba(0,0,0,0.8)]"
           :key="index"
           :to="`/category${category.slug}`"
           >{{ category.name }}</RouterLink
