@@ -23,7 +23,7 @@ defineProps<Omit<TReview, 'content'>>()
       <p class="hidden sm:block capitalize text-[1.05rem] font-semibold mb-2 text-black">
         {{ title }}
       </p>
-      <p class="text-[1.02rem] sm:text-[0.9rem]/6 mb-4" v-html="excerpt + '...'" />
+      <p class="text-[1.02rem] sm:text-[0.92rem]/6 mb-4" v-html="excerpt + '...'" />
       <p v-if="series" class="text-[1.0rem] sm:text-[0.84rem] mb-4">
         Published in
         <RouterLink

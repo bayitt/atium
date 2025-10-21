@@ -44,27 +44,31 @@ const displayMore = (more: boolean) => {
   <Header />
   <template v-if="review">
     <section>
-      <div class="max-w-[1200px] mx-auto grid grid-cols-12 py-8">
+      <div
+        class="w-[88%] sm:w-[90%] max-w-[1200px] mx-auto flex flex-col lg:grid grid-cols-12 py-8"
+      >
         <div class="col-span-1 sticky top-[10px] flex flex-col gap-5 h-fit">
           <Share :title="review.title" />
         </div>
-        <div class="col-span-8 text-[rgba(0,0,0,0.75)]">
-          <div class="mb-7 text-[rgba(0,0,0,0.85)] w-[105%]">
+        <div class="col-span-8 text-[rgba(0,0,0,0.8)]">
+          <div class="mb-7 text-[rgba(0,0,0,0.85)] lg:w-[105%]">
             <div class="p-10 bg-[rgba(0,0,0,0.01)] mb-4 flex justify-between items-center">
               <div class="w-3/5">
-                <p class="capitalize text-black font-semibold text-xl/8 mb-2">{{ review.title }}</p>
-                <p class="text-[0.9rem] text-[rgba(0,0,0,0.77)]">
+                <p class="capitalize text-black font-semibold text-2xl/9 mb-2">
+                  {{ review.title }}
+                </p>
+                <p class="text-[0.95rem] text-[rgba(0,0,0,0.77)]">
                   Book by <span class="capitalize">{{ review.author }}</span>
                 </p>
               </div>
 
               <div class="w-2/5 flex justify-end items-center gap-2">
-                <p class="text-[0.83rem] h-fit">Review by Olamileke</p>
+                <p class="text-[0.87rem] h-fit">Review by Olamileke</p>
                 <p class="l">|</p>
-                <p class="text-[0.83rem] h-fit">{{ getReadingTime() }} min read</p>
+                <p class="text-[0.87rem] h-fit">{{ getReadingTime() }} min read</p>
               </div>
             </div>
-            <div class="flex gap-2 text-[rgba(0,0,0,0.75)]">
+            <div class="flex gap-2 text-[rgba(0,0,0,0.8)]">
               <RouterLink
                 v-for="(category, index) in review.categories"
                 class="text-[0.85rem] capitalize underline decoration-double"
@@ -88,9 +92,9 @@ const displayMore = (more: boolean) => {
               </p>
             </div>
           </div>
-          <div v-html="review.content" class="text-[0.96rem]/6.25 w-[105%] mb-14" />
+          <div v-html="review.content" class="text-base/7.5 lg:w-[105%] mb-14" />
         </div>
-        <div class="col-span-3 sticky top-[10px] h-fit">
+        <div class="hidden lg:block col-span-3 sticky top-[10px] h-fit">
           <img :src="review.image" class="h-[300px] ml-[50px] w-full object-contain" />
         </div>
       </div>

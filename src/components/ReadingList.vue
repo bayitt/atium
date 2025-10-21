@@ -39,7 +39,7 @@ useGetReadingList(updateReadingListItems)
         class="relative flex flex-reverse gap-4 text-[rgba(0,0,0,0.8)] border-b-[1px] border-b-[rgba(0,0,0,0.06)] last-of-type:border-none pb-4 mb-4"
       >
         <div class="flex flex-col w-5/7" :class="item.status ? '' : 'justify-center'">
-          <p class="text-[15px] sm:text-md lg:text-[14px] capitalize font-semibold mb-2">
+          <p class="text-[15px] sm:text-md lg:text-[0.92rem] capitalize font-semibold mb-2">
             {{ item.title }}
           </p>
           <p

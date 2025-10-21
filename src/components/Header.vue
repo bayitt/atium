@@ -18,7 +18,7 @@ const isSidebarOpen = ref(false)
       <RouterLink to="/" class="relative">
         <img
           src="https://res.cloudinary.com/olamileke/image/upload/c_thumb,w_200,g_face/v1760027186/chequer_dev/ol-high-resolution-logo_fmyams.png"
-          class="size-8 sm:size-7 lg:size-9 object-cover"
+          class="size-8 sm:size-7 lg:size-8 object-cover"
         />
       </RouterLink>
 

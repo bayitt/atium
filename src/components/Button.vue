@@ -2,7 +2,7 @@
 
 <template>
   <button
-    class="outline-none border-none p-2 sm:p-3 text-sm rounded-sm cursor-pointer bg-black sm:text-md text-white"
+    class="outline-none border-none p-2 sm:p-[10px] text-sm rounded-[3px] cursor-pointer bg-black sm:text-md text-white"
   >
     <slot />
   </button>

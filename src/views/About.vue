@@ -7,7 +7,7 @@ useHead(aboutMetaInfo)
 
 <template>
   <div
-    class="px-[6%] sm:px-0 text-[0.89rem]/6 md:text-[0.92rem]/6 text-[rgba(0,0,0,0.85)] pt-5 lg:pt-0 pb-10"
+    class="px-[6%] sm:px-0 text-[0.89rem]/6 md:text-[0.94rem]/6.5 text-[rgba(0,0,0,0.85)] pt-5 lg:pt-0 pb-10"
   >
     Hi there 🙂, my name is Leke, an avid reader and consumer of books. I love how reading serves as
     an escape into my mind where stories unfold and different tales are woven. It always feels to me
