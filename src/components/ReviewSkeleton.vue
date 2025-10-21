@@ -1,23 +1,19 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div class="grid grid-cols-12">
-    <div class="col-span-8 pr-5">
+  <div class="flex flex-col-reverse sm:grid grid-cols-12">
+    <div class="col-span-8 px-[6%] sm:pl-0 sm:pr-5">
       <div class="flex gap-2 mb-4">
-        <p class="h-4 w-15 bg-[#ddd] animate-pulse" />
-        <p class="h-4 w-15 bg-[#ddd] animate-pulse" />
+        <p class="h-4 w-20 bg-[#ddd] animate-pulse" />
+        <p class="h-4 w-20 bg-[#ddd] animate-pulse" />
       </div>
-      <p class="h-5 w-40 bg-[#ddd] animate-pulse mb-4" />
-      <p class="h-16 w-full mb-4 bg-[#ddd] animate-pulse" />
-      <div class="flex gap-1 mb-4">
-        <p class="h-4 w-15 bg-[#ddd] animate-pulse" />
-        <p class="h-4 w-25 bg-[#ddd] animate-pulse" />
-      </div>
-      <p class="h-4 w-55 bg-[#ddd] animate-pulse" />
+      <p class="hidden sm:block h-5 w-40 bg-[#ddd] animate-pulse mb-4" />
+      <p class="h-24 sm:h-16 sm:w-[95%] mb-4 bg-[#ddd] animate-pulse" />
+      <p class="h-4 w-45 mb-4 bg-[#ddd] animate-pulse" />
+      <p class="h-4 w-65 bg-[#ddd] animate-pulse" />
     </div>
-    <div class="col-span-4 flex items-center">
-      <div class="animate-pulse bg-[#ddd] rounded-md w-full h-[180px]" />
+    <div class="col-span-4 flex items-center mb-5 sm:mb-0 px-[28%] sm:px-12">
+      <div class="animate-pulse bg-[#ddd] w-full h-[230px] sm:h-[180px]" />
     </div>
   </div>
 </template>

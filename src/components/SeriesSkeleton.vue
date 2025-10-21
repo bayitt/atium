@@ -1,19 +1,22 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <div class="grid grid-cols-12 mb-8">
-        <div class="col-span-6">
-            <p class="h-4 w-40 bg-[#ddd] animate-pulse mb-2" />
-            <p class="h-20 w-[90%] bg-[#ddd] animate-pulse mb-4" />
+  <div class="flex flex-col-reverse sm:grid grid-cols-12 mb-8">
+    <div class="sm:col-span-6 px-[6%] sm:px-0">
+      <p class="hidden sm:block h-4 w-40 bg-[#ddd] animate-pulse mb-2" />
+      <p class="h-20 sm:w-[90%] bg-[#ddd] animate-pulse mb-4" />
 
-            <p class="h-4 w-20 bg-[#ddd] animate-pulse mb-5" />
-            <p class="h-4 w-1/2 bg-[#ddd] animate-pulse" />
-        </div>
-        <div class="col-span-6 flex flex-wrap gap-3 pl-6">
-            <div class="h-[120px] bg-[#ddd] animate-pulse" style="width: calc(50% - 12px)" />
-            <div class="h-[120px] bg-[#ddd] animate-pulse" style="width: calc(50% - 12px)" />
-            <div class="h-[120px] bg-[#ddd] animate-pulse" style="width: calc(50% - 12px)" />
-        </div>
+      <p class="h-4 w-25 bg-[#ddd] animate-pulse mb-3 sm:mb-5" />
+      <p class="h-4 w-3/5 bg-[#ddd] animate-pulse" />
     </div>
+    <div
+      class="flex flex-wrap justify-center items-center sm:col-span-6 flex flex-wrap gap-3 px-[6%] sm:pl-6 sm:pr-0 mb-5 sm:mb-0"
+    >
+      <div
+        v-for="n in 3"
+        :key="n"
+        class="h-[170px] sm:h-[145px] w-[calc(38%-12px)] sm:w-[calc(33%-12px)] bg-[#ddd] animate-pulse"
+      />
+    </div>
+  </div>
 </template>

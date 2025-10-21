@@ -2,7 +2,7 @@ import type { TPagination } from '@/types/pagination'
 import type { TSeries } from '@/types/series'
 import { store } from '@/store'
 
-const SERIES_COUNT = 3
+const SERIES_COUNT = 10
 
 export const useGetSeries = (
   page: number,

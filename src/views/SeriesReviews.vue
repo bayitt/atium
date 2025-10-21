@@ -29,18 +29,18 @@ onMounted(() => {
 
 <template>
   <div v-if="series" class="flex flex-col gap-8">
-    <div class="text-[rgba(0,0,0,0.85)] p-8 pt-1 border-b-[1px] border-b-[rgba(0,0,0,0.06)]">
-      <p class="capitalize text-lg font-semibold mb-2">{{ series.name }}</p>
-      <p class="text-[0.92rem]/6 mb-4">{{ series.description }}</p>
-      <p class="text-xs uppercase font-semibold">SERIES BY {{ series.author }}</p>
+    <div class="text-[rgba(0,0,0,0.75)] p-8 sm:pt-1 border-b-[1px] border-b-[rgba(0,0,0,0.06)]">
+      <p class="capitalize text-xl sm:text-lg font-semibold mb-2">{{ series.name }}</p>
+      <p class="text-[1.02rem] sm:text-[0.92rem]/6 mb-4">{{ series.description }}</p>
+      <p class="text-[0.85rem] sm:text-xs uppercase font-semibold">SERIES BY {{ series.author }}</p>
     </div>
 
     <Review v-for="(review, index) in reviews" :key="index" v-bind="review" />
   </div>
   <div class="flex flex-col gap-8" v-else>
-    <div class="p-8 pt-1">
+    <div class="p-8 sm:pt-1">
       <p class="h-5 w-60 bg-[#ddd] animate-pulse mb-4" />
-      <p class="h-8 w-full bg-[#ddd] animate-pulse mb-4" />
+      <p class="h-16 w-full bg-[#ddd] animate-pulse mb-4" />
       <p class="h-4 w-40 bg-[#ddd] animate-pulse" />
     </div>
     <ReviewSkeleton v-for="n in 3" :key="n" />
