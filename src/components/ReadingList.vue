@@ -17,6 +17,7 @@ const updateReadingListItems = (items: TReadingListItem[]) => {
 
   const activeItem = parsedItems[activeItemIndex]
   parsedItems.splice(activeItemIndex, 1)
+  parsedItems.reverse()
   parsedItems.unshift(activeItem)
 
   readingListItems.value = parsedItems
@@ -55,7 +56,10 @@ useGetReadingList(updateReadingListItems)
             CURRENT READ
           </p>
         </div>
-        <img :src="item.image" class="w-2/7 object-contain h-[80px] translate-x-[25%]" />
+        <img
+          :src="item.image"
+          class="w-2/7 object-contain h-[80px] translate-x-[25%] lg:translate-x-[29%]"
+        />
       </div>
     </template>
     <template v-else>
