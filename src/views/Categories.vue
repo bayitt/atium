@@ -6,9 +6,9 @@ import Review from '../components/Review.vue'
 import ReviewSkeleton from '../components/ReviewSkeleton.vue'
 import { useGetCategories } from '@/api/category'
 import { useGetReviews } from '@/api/review'
-import { TCategory } from '@/types/category'
-import { TReview } from '@/types/review'
-import { TPagination } from '@/types/pagination'
+import type { TCategory } from '@/types/category'
+import type { TReview } from '@/types/review'
+import type { TPagination } from '@/types/pagination'
 import { store } from '@/store'
 import { useReviewsMetaInfo } from '@/meta/review'
 
@@ -17,7 +17,7 @@ const metaFunc = useHead(useReviewsMetaInfo(undefined as any))
 const categories = ref<TCategory[] | undefined>()
 const route = useRoute()
 const reviews = ref<TReview[] | undefined>()
-const pagination = ref<TPagination | undefined>
+const pagination = ref<TPagination | undefined>()
 
 const updateCategories = (fetchedCategories: TCategory[]) => {
   categories.value = fetchedCategories
@@ -45,12 +45,14 @@ watchEffect(() => {
 })
 
 const loadReviews = () => {
+  if (!pagination?.value) return
+
   const screenHeight = window.screen.height
   const totalHeight = document.body.offsetHeight
 
   if (totalHeight - (window.scrollY + screenHeight) < 3) {
     if (pagination.value?.totalPages - pagination.value?.currentPage > 0) {
-      let category: TCategory
+      let category: TCategory | undefined
       if (route.params?.slug) {
         category = (categories?.value ?? []).find(({ slug }) => slug === '/' + route.params.slug)
       }

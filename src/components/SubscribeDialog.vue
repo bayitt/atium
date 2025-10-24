@@ -17,6 +17,8 @@ watchEffect(() => {
 })
 
 const onSubscribe = () => {
+  if (!input?.value) return
+
   input.value.value = ''
   input.value.focus()
 
@@ -27,6 +29,7 @@ const onSubscribe = () => {
 }
 
 const subscribe = () => {
+  if (!input?.value) return
   if (store.networkOperation === 'subscribe') return
 
   subscribeApi(input.value.value, onSubscribe)

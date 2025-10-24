@@ -2,8 +2,8 @@
 import { ref, watchEffect } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useGetRelatedSeriesReviews } from '@/api/review'
-import { TReview } from '@/types/review'
-import { TSeries } from '@/types/series'
+import type { TReview } from '@/types/review'
+import type { TSeries } from '@/types/series'
 import Review from '@/components/Review.vue'
 import ReviewSkeleton from '@/components/ReviewSkeleton.vue'
 
@@ -14,12 +14,11 @@ const { review_slug, series } = defineProps<{
   review_slug: string
   series: Pick<TSeries, 'uuid' | 'name'>
 }>()
-const reviews = ref<TReview | undefined>()
+const reviews = ref<TReview[] | undefined>()
 
-const updateReviews = (
-  fetchedReviews: Pick<TReview, 'uuid' | 'title' | 'image' | 'author' | 'created_at'>,
-) => {
-  const parsedReviews = fetchedReviews.filter(({ slug }) => review_slug != slug).reverse()
+const updateReviews = (fetchedReviews: TReview[]) => {
+  const parsedReviews = fetchedReviews.filter(({ slug }) => review_slug != slug)
+  parsedReviews.reverse()
   reviews.value = parsedReviews
 
   emit('displayMore', parsedReviews.length > 0)

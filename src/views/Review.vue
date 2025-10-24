@@ -3,7 +3,7 @@ import { ref, watchEffect } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import { useGetReview } from '@/api/review'
-import { TReview } from '@/types/review'
+import type { TReview } from '@/types/review'
 import Header from '@/components/Header.vue'
 import RelatedSeriesReviews from '@/components/RelatedSeriesReviews.vue'
 import RelatedCategoriesReviews from '@/components/RelatedCategoriesReviews.vue'
@@ -29,7 +29,7 @@ const getReadingTime = () => {
 
   const div = window.document.createElement('div')
   div.innerHTML = review.value.content
-  return Math.ceil(div.textContent.split(' ').length / 225)
+  return Math.ceil((div.textContent ?? '').split(' ').length / 225)
 }
 
 watchEffect(() => {
