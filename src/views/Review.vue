@@ -29,7 +29,7 @@ const getReadingTime = () => {
 
   const div = window.document.createElement('div')
   div.innerHTML = review.value.content
-  return Math.ceil(div.textContent.split(' ').length / 260)
+  return Math.ceil(div.textContent.split(' ').length / 225)
 }
 
 watchEffect(() => {
@@ -63,7 +63,7 @@ const displayMore = (more: boolean) => {
                 <p
                   class="capitalize text-black font-semibold text-center sm:text-left text-xl md:text-2xl/9 lg:text-xl/8 mb-3 lg:mb-2"
                 >
-                  A Review Of <i class="mr-1">{{ review.title }}</i> By Olamileke Fambegbe
+                  A Review Of {{ review.title }} By Olamileke Fambegbe
                 </p>
                 <p
                   class="mb-3 sm:mb-2 text-[17px] sm:text-[1rem] md:text-[0.95rem] text-[rgba(0,0,0,0.85)] lg:text-[rgba(0,0,0,0.77)] text-center sm:text-left"
@@ -83,7 +83,7 @@ const displayMore = (more: boolean) => {
               />
             </div>
             <div
-              class="relative left-[6%] sm:left-[5%] lg:left-0 w-[88%] sm:w-[90%] flex flex-col sm:flex-row flex-wrap items-center sm:items-start sm:justify-center lg:justify-start gap-2 mb-5 lg:mb-0 text-[rgba(0,0,0,0.8)]"
+              class="relative left-[6%] sm:left-[5%] lg:left-[12.5%] w-[88%] sm:w-[90%] flex flex-col sm:flex-row flex-wrap items-center sm:items-start sm:justify-center lg:justify-start gap-2 mb-6 lg:mb-0 text-[rgba(0,0,0,0.8)]"
             >
               <RouterLink
                 v-for="(category, index) in review.categories"
@@ -114,7 +114,7 @@ const displayMore = (more: boolean) => {
           </div>
           <div
             v-html="review.content"
-            class="text-[18px]/8.5 sm:text-base/7.5 relative left-[6%] sm:left-[5%] lg:left-0 w-[88%] sm:w-[90%] lg:w-full mb-14"
+            class="text-[18px]/8.5 sm:text-base/7.5 relative left-[6%] sm:left-[5%] lg:left-[12.5%] w-[88%] sm:w-[90%] lg:w-[75%] mb-14 [&>h3]:text-xl [&>h3]:mb-2"
           />
         </div>
         <div class="hidden col-span-3 sticky top-[10px] h-fit">

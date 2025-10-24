@@ -11,7 +11,7 @@
           <div
             class="h-[420px] sm:h-[270px] bg-[#ddd] animate-pulse mb-4 p-10 flex justify-between items-center"
           />
-          <div class="px-[6%] sm:px-[5%] lg:px-0 flex gap-2">
+          <div class="px-[6%] sm:px-[5%] lg:px-[12.5%] flex gap-2">
             <p
               v-for="n in 4"
               :key="n"
@@ -21,7 +21,7 @@
           </div>
         </div>
 
-        <div class="px-[6%] sm:px-[5%] lg:px-0">
+        <div class="px-[6%] sm:px-[5%] lg:px-[12.5%]">
           <div v-for="m in 6" :key="m" class="mb-5">
             <p
               v-for="n in 4"

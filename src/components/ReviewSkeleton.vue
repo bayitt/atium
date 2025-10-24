@@ -12,7 +12,9 @@
       <p class="h-4 w-45 mb-4 bg-[#ddd] animate-pulse" />
       <p class="h-4 w-65 bg-[#ddd] animate-pulse" />
     </div>
-    <div class="col-span-4 flex items-center mb-5 sm:mb-0 px-[28%] sm:px-12">
+    <div
+      class="col-span-4 flex items-center mb-5 sm:mb-0 px-[28%] sm:pl-[45%] sm:pr-0 md:pl-[53%] lg:px-12"
+    >
       <div class="animate-pulse bg-[#ddd] w-full h-[230px] sm:h-[180px]" />
     </div>
   </div>
