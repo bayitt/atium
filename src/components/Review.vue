@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TReview } from '@/types/review'
+import type { TReview } from '@/types/review'
 import { parseDate } from '@/utilities/date'
 
 defineProps<Omit<TReview, 'content'>>()

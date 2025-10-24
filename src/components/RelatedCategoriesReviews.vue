@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, watchEffect } from 'vue'
-import { TCategory } from '@/types/category'
-import { TReview } from '@/types/review'
+import type { TCategory } from '@/types/category'
+import type { TReview } from '@/types/review'
 import { useGetRelatedCategoriesReviews } from '@/api/review'
 import Review from '@/components/Review.vue'
 import ReviewSkeleton from '@/components/ReviewSkeleton.vue'
@@ -11,7 +11,7 @@ const emit = defineEmits<{
 }>()
 const { review_slug, categories } = defineProps<{
   review_slug: string
-  categories: Pick<TCategory, 'name' | 'uuid'>
+  categories: Pick<TCategory, 'name' | 'uuid'>[]
 }>()
 
 const reviews = ref<TReview[] | undefined>()

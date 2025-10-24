@@ -3,8 +3,8 @@ import { ref, watchEffect, onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import { useGetSeries } from '@/api/series'
-import { TSeries } from '@/types/series'
-import { TPagination } from '@/types/pagination'
+import type { TSeries } from '@/types/series'
+import type { TPagination } from '@/types/pagination'
 import SeriesSkeleton from '../components/SeriesSkeleton.vue'
 import { store } from '@/store'
 import { seriesMetaInfo } from '@/meta/series'
@@ -22,6 +22,8 @@ const updateSeries = (fetchedSeries: TSeries[], fetchedPagination: TPagination) 
 useGetSeries(1, updateSeries)
 
 const loadSeries = () => {
+  if (!pagination?.value) return
+
   const screenHeight = window.screen.height
   const totalHeight = document.body.offsetHeight
 
@@ -58,7 +60,8 @@ onUnmounted(() => {
             {{ item.description }}
           </p>
           <p class="text-[1.02rem] sm:text-sm mb-3 sm:mb-5">
-            {{ item.images.length }} {{ item.images.length > 1 ? 'reviews' : 'review' }}
+            {{ (item?.images ?? []).length }}
+            {{ (item?.images ?? []).length > 1 ? 'reviews' : 'review' }}
           </p>
           <p class="text-[0.85rem] sm:text-xs uppercase font-semibold">
             SERIES BY {{ item.author }}
@@ -66,14 +69,14 @@ onUnmounted(() => {
         </div>
         <div
           class="relative sm:col-span-6 flex flex-wrap px-[6%] sm:px-0 gap-3 sm:gap-3 justify-center items-center mb-5 sm:mb-0"
-          :class="item.images.length === 1 ? 'sm:pl-32' : 'sm:pl-6'"
+          :class="(item?.images ?? []).length === 1 ? 'sm:pl-32' : 'sm:pl-6'"
         >
           <img
-            v-for="(image, index) in item.images"
+            v-for="(image, index) in item?.images"
             :key="index"
             :src="image"
             class="object-contain"
-            :class="item.images.length === 1 ? 'h-[180px]' : 'h-[170px] sm:h-[145px]'"
+            :class="(item?.images ?? []).length === 1 ? 'h-[180px]' : 'h-[170px] sm:h-[145px]'"
           />
           <div
             class="sm:hidden absolute left-0 bottom-0 px-[6%] py-4 text-white w-full bg-[rgba(0,0,0,0.4)]"

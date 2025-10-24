@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useGetReadingList } from '@/api/reading.list'
-import { TReadingListItem } from '@/types/reading.list'
+import type { TReadingListItem } from '@/types/reading.list'
 import ReviewSkeleton from '@/components/ReviewSkeleton.vue'
 
 const readingListItems = ref<TReadingListItem[] | undefined>()
