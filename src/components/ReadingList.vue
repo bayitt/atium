@@ -58,17 +58,17 @@ useGetReadingList(updateReadingListItems)
         </div>
         <img
           :src="item.image"
-          class="w-2/7 object-contain h-[80px] translate-x-[25%] lg:translate-x-[29%]"
+          class="w-2/7 object-contain h-[80px] translate-x-[25%] lg:translate-x-[20%]"
         />
       </div>
     </template>
     <template v-else>
-      <div v-for="n in 5" :key="n" class="flex gap-4 mb-4" style="width: 345px">
-        <div class="w-2/7 h-[80px] bg-[#ddd] animate-pulse" />
-        <div class="flex flex-col justify-center">
-          <p class="h-2 w-50 bg-[#ddd] animate-pulse mb-2" />
-          <p class="h-2 w-50 bg-[#ddd] animate-pulse" />
+      <div v-for="n in 5" :key="n" class="flex justify-between gap-0 mb-4 w-full lg:pr-[2px]">
+        <div class="flex flex-col justify-center w-8/10">
+          <p class="h-2 w-[80%] bg-[#ddd] animate-pulse mb-2" />
+          <p class="h-2 w-[80%] bg-[#ddd] animate-pulse" />
         </div>
+        <div class="w-[60px] h-[80px] bg-[#ddd] animate-pulse" />
       </div>
     </template>
   </div>
