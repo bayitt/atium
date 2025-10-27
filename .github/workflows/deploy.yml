@@ -25,6 +25,8 @@ jobs:
             -H 'Authorization: Bearer ${{ secrets.NOTIFY_BEARER_TOKEN }}' \
             -H 'Content-Type: application/json' \
             -d '{"service":"atium", "step":"BUILD_START"}' 
+          touch .env.production
+          echo VITE_API_URL=${{ secrets.API_URL }} >> .env.production
           docker build -t ${{ secrets.DOCKERHUB_REPO }} .
 
       - name: Send out notification if application build is successful
