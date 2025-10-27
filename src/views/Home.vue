@@ -54,7 +54,6 @@ onMounted(() => {
       <div
         v-if="isDesktop"
         class="hidden lg:block sticky top-0 h-fit transition-[padding] duration-700 ease-in col-span-4 -z-10"
-        style="right: calc((100vw - 1200px) / 2)"
       >
         <ReadingList />
       </div>
