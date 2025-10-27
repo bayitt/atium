@@ -23,10 +23,12 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
+RUN apk update && apk add nginx
+
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
 COPY --from=build /app/dist /app/dist
 
 COPY --from=build /app/node_modules /app/node_modules
 
-EXPOSE 3000
-
-CMD ["yarn", "run", "dev"]
+CMD ["nginx", "-g", "daemon", "off"]
