@@ -33,4 +33,4 @@ COPY --from=build /app/node_modules /app/node_modules
 
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon", "off"]
+CMD ["nginx", "-g", "'daemon off;'"]

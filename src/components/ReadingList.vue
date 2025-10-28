@@ -58,7 +58,7 @@ useGetReadingList(updateReadingListItems)
         </div>
         <img
           :src="item.image"
-          class="w-2/7 object-contain h-[80px] translate-x-[25%] lg:translate-x-[20%]"
+          class="w-2/7 object-contain h-[80px] translate-x-[16%] sm:translate-x-[25%] lg:translate-x-[20%]"
         />
       </div>
     </template>

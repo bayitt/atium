@@ -61,17 +61,17 @@ const displayMore = (more: boolean) => {
             >
               <div class="sm:w-[70%] lg:w-3/5">
                 <p
-                  class="capitalize text-black font-semibold text-center sm:text-left text-xl md:text-2xl/9 lg:text-xl/8 mb-3 lg:mb-2"
+                  class="capitalize text-black font-semibold text-center sm:text-left text-[1.2rem] md:text-2xl/9 lg:text-xl/8 mb-3 lg:mb-2"
                 >
                   A Review Of {{ review.title }} By Olamileke Fambegbe
                 </p>
                 <p
-                  class="mb-3 sm:mb-2 text-[17px] sm:text-[1rem] md:text-[0.95rem] text-[rgba(0,0,0,0.85)] lg:text-[rgba(0,0,0,0.77)] text-center sm:text-left"
+                  class="mb-3 sm:mb-2 text-[1rem] md:text-[0.95rem] text-[rgba(0,0,0,0.85)] lg:text-[rgba(0,0,0,0.77)] text-center sm:text-left"
                 >
                   Book by <span class="capitalize">{{ review.author }}</span>
                 </p>
                 <p
-                  class="text-[17px] sm:text-sm lg:text-[14px] text-[rgba(0,0,0,0.85)] text-center sm:text-left"
+                  class="text-base lg:text-[14px] text-[rgba(0,0,0,0.85)] text-center sm:text-left"
                 >
                   {{ getReadingTime() }} min read
                 </p>
@@ -114,7 +114,7 @@ const displayMore = (more: boolean) => {
           </div>
           <div
             v-html="review.content"
-            class="text-[18px]/8.5 sm:text-base/7.5 relative left-[6%] sm:left-[5%] lg:left-[12.5%] w-[88%] sm:w-[90%] lg:w-[75%] mb-14 [&>h3]:text-xl [&>h3]:mb-2"
+            class="text-[18px]/8.5 sm:text-base/7.5 relative left-[6%] sm:left-[5%] lg:left-[12.5%] w-[88%] sm:w-[90%] lg:w-[75%] mb-14 [&_h3]:text-xl [&_h3:not(:empty)]:py-2 [&_h3]:sticky [&_h3]:top-[54px] lg:[&_h3]:top-0 [&_h3]:bg-white"
           />
         </div>
         <div class="hidden col-span-3 sticky top-[10px] h-fit">
