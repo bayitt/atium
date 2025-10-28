@@ -55,7 +55,7 @@ const displayMore = (more: boolean) => {
           <Share :title="review.title" />
         </div>
         <div class="col-span-11 text-[rgba(0,0,0,0.85)]">
-          <div class="mb-8 sm:mb-5 lg:mb-7 text-[rgba(0,0,0,0.85)] lg:w-full">
+          <div class="mb-8 sm:mb-5 text-[rgba(0,0,0,0.85)] lg:w-full">
             <div
               class="px-[6%] sm:px-[5%] py-10 lg:pl-15 lg:pr-15 bg-[rgba(0,0,0,0.01)] mb-6 lg:mb-4 flex flex-col-reverse items-center sm:flex-row justify-between items-center"
             >
@@ -114,7 +114,7 @@ const displayMore = (more: boolean) => {
           </div>
           <div
             v-html="review.content"
-            class="text-[18px]/8.5 sm:text-base/7.5 relative left-[6%] sm:left-[5%] lg:left-[12.5%] w-[88%] sm:w-[90%] lg:w-[75%] mb-14 [&_h3]:text-xl [&_h3:not(:empty)]:py-2 [&_h3]:sticky [&_h3]:top-[54px] lg:[&_h3]:top-0 [&_h3]:bg-white"
+            class="text-[18px]/8.5 sm:text-base/7.5 relative left-[6%] sm:left-[5%] lg:left-[12.5%] w-[88%] sm:w-[90%] lg:w-[75%] mb-14 [&_p:has(br)]:h-0 [&_p:has(br)]:my-1 lg:[&_p:has(br)]:my-[6px] [&_h3]:text-xl [&_h3:not(:empty)]:py-2 [&_h3]:sticky [&_h3]:top-[54px] lg:[&_h3]:top-0 [&_h3]:bg-white"
           />
         </div>
         <div class="hidden col-span-3 sticky top-[10px] h-fit">
