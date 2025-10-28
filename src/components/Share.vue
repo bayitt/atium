@@ -38,7 +38,7 @@ const handleShare = (platform: string) => {
       url = `https://twitter.com/intent/tweet?text=${title}&url=${url}`
       break
     case 'linkedin':
-      url = `https://www.linkedin.com/sharing/share-offsite/url=${url}`
+      url = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`
       break
     default:
       url = `mailto:you@example.com?subject=${title}&body=${url}`

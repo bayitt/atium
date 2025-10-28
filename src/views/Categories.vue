@@ -63,6 +63,7 @@ const loadReviews = () => {
 
 onMounted(() => {
   window.addEventListener('scroll', loadReviews)
+  window.scrollTo(0, 0)
 })
 
 onUnmounted(() => {

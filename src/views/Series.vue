@@ -36,6 +36,7 @@ const loadSeries = () => {
 
 onMounted(() => {
   window.addEventListener('scroll', loadSeries)
+  window.scrollTo(0, 0)
 })
 
 onUnmounted(() => {
