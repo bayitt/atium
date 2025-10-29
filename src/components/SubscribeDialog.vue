@@ -43,7 +43,7 @@ const subscribe = () => {
     @click="$emit('handleClose')"
   >
     <form
-      class="w-[90%] sm:w-[500px] p-8 bg-white rounded"
+      class="w-[90%] sm:w-[500px] p-6 sm:p-8 bg-white rounded"
       @click.stop=""
       @submit.prevent="subscribe"
     >
