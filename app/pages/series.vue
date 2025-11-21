@@ -1,8 +1,7 @@
 <script setup lang="ts">
-
+definePageMeta({ layout: "index-layout" })
 </script>
 
 <template>
-    <Header />
-    <slot />
+    series
 </template>

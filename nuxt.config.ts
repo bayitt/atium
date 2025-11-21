@@ -4,8 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  css: ['./app/assets/css/main.css'],
 
+  css: ['./app/assets/css/main.css'],
   vite: {
     plugins: [tailwindcss()],
   },
@@ -14,5 +14,9 @@ export default defineNuxtConfig({
     families: {
       Figtree: [400, 600],
     },
+  },
+
+  runtimeConfig: {
+    API_URL: import.meta.env?.VITE_API_URL,
   },
 })
