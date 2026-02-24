@@ -5,5 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-    index
+    <CategoryReviews />
 </template>
