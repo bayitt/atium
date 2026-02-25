@@ -20,8 +20,6 @@ const readingListItems = computed(() => {
   const items = [...readingListResponse.value]
   const activeItemIndex = items.findIndex(({ status }) => status)
 
-  console.log(activeItemIndex)
-
   if (activeItemIndex < 0) {
     return items
   }
