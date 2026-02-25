@@ -14,7 +14,9 @@ watchEffect(() => {
   path.value = route.path
 })
 
-const { public: { API_URL } } = useRuntimeConfig()
+const {
+  public: { API_URL },
+} = useRuntimeConfig()
 const { data: categoriesResponse } = useFetch(`${API_URL}/categories`)
 
 const categories = computed(() => {
@@ -68,8 +70,8 @@ const categories = computed(() => {
             text-[rgba(0,0,0,0.8)]
             mb-7
             sm:mb-7 sm:mt-3
-            lg:mb-5 lg:mt-0
-            lg:border-b-[1px] g:border-b-[rgba(0,0,0,0.06)]
+            lg:mb-5 lg:mt-0 lg:border-b-[1px]
+            g:border-b-[rgba(0,0,0,0.06)]
           "
         >
           <NuxtLink
@@ -99,6 +101,23 @@ const categories = computed(() => {
         </div>
 
         <slot />
+      </div>
+
+      <div
+        class="
+          hidden
+          lg:block
+          sticky
+          top-0
+          h-fit
+          transition-[padding]
+          duration-700
+          ease-in
+          col-span-4
+          -z-10
+        "
+      >
+        <ReadingList />
       </div>
 
       <div

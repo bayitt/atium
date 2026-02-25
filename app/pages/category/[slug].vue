@@ -5,5 +5,5 @@
 </script>
 
 <template>
-    Categories Page
+    <CategoryReviews />
 </template>
