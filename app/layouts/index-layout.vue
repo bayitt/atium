@@ -57,6 +57,7 @@ const categories = computed(() => {
           >
         </div>
         <div
+          v-if="route.path === '/' || route.path.includes('/category/')"
           class="
             px-[6%]
             sm:px-0

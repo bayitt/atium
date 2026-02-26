@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, Suspense, computed, onMounted } from 'vue'
-import { useGetReviews } from '~/api/review'
 import type { TReview } from '~/types/review'
 import type { TPagination } from '~/types/pagination'
 import { useNetworkOperation } from '~/store'
