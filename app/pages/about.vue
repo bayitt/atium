@@ -1,7 +1,20 @@
 <script setup lang="ts">
 import { onMounted } from "vue"
-definePageMeta({ layout: "index-layout" })
 
+const title = "Olamileke's Library - About"
+const description = "A brief dive into Olamileke's background with books."
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogUrl: 'https://library.olamileke.dev/about',
+  twitterCreator: '@f_olamileke',
+  twitterTitle: title,
+  twitterDescription: description,
+})
+
+definePageMeta({ layout: "index-layout" })
 
 onMounted(() => {
   window.scrollTo(0, 0)

@@ -5,7 +5,7 @@ import type { TReadingListItem } from '@/types/reading.list'
 const {
   public: { API_URL },
 } = useRuntimeConfig()
-const endpoint = `${API_URL}/reading-list`
+const endpoint = await `${API_URL}/reading-list`
 const { data: readingListResponse } = useFetch(endpoint, {
   key: endpoint,
   dedupe: 'defer',

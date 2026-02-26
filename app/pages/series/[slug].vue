@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { TSeries } from '~/types/series'
 import { TReview } from '~/types/review'
+import { capitalize } from '~/utilities/string'
 
 definePageMeta({
   layout: 'index-layout',
@@ -11,13 +12,38 @@ const route = useRoute()
 const {
   public: { API_URL },
 } = useRuntimeConfig()
-const { data: seriesResponse } = useFetch(`${API_URL}/series/${route.params.slug}`)
-const { data: reviewResponse } = useFetch(
-  `${API_URL}/series/${route.params.slug}/reviews?fields=author,categories,created_at,excerpt,image,series,slug,title`
-)
+
+const seriesEndpoint = `${API_URL}/series/${route.params.slug}`
+const { data: seriesResponse } = await useFetch(seriesEndpoint, {
+  key: seriesEndpoint,
+  dedupe: 'defer',
+  getCachedData: (key, nuxtApp) => {
+    return nuxtApp.payload.data[key] || nuxtApp.static.data[key]
+  },
+})
+const reviewEndpoint = `${API_URL}/series/${route.params.slug}/reviews?fields=author,categories,created_at,excerpt,image,series,slug,title`
+const { data: reviewResponse } = await useFetch(reviewEndpoint, {
+  key: reviewEndpoint,
+  dedupe: 'defer',
+  getCachedData: (key, nuxtApp) => {
+    return nuxtApp.payload.data[key] || nuxtApp.static.data[key]
+  },
+})
 
 const series: TSeries = computed(() => seriesResponse.value)
 const reviews: TReview[] | undefined = computed(() => reviewResponse.value)
+
+const title = `${capitalize(seriesResponse.value.name)} by ${capitalize(seriesResponse.value.author)}`
+useSeoMeta({
+  title,
+  description: seriesResponse.value.description,
+  ogTitle: title,
+  ogDescription: seriesResponse.value.description,
+  ogUrl: 'https://library.olamileke.dev/series',
+  twitterCreator: '@f_olamileke',
+  twitterTitle: title,
+  twitterDescription: seriesResponse.value.description,
+})
 </script>
 
 <template>

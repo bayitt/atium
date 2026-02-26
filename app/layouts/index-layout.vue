@@ -17,7 +17,7 @@ watchEffect(() => {
 const {
   public: { API_URL },
 } = useRuntimeConfig()
-const { data: categoriesResponse } = useFetch(`${API_URL}/categories`)
+const { data: categoriesResponse } = await useFetch(`${API_URL}/categories`)
 
 const categories = computed(() => {
   if (!categoriesResponse.value) return []

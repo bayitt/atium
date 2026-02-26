@@ -1,6 +1,20 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+useHead({
+  meta: [
+    { name: 'type', content: 'website' },
+    { name: 'og:site_name', content: "Olamileke's Library" },
+  ],
+  link: [
+    {
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: 'https://res.cloudinary.com/olamileke/image/upload/c_thumb,w_200,g_face/v1760027186/chequer_dev/ol-high-resolution-logo_fmyams.png',
+    },
+  ],
+})
+
 const isDialogOpen = ref(false)
 </script>
 

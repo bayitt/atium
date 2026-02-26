@@ -3,6 +3,7 @@ import { ref, Suspense, computed, onMounted } from 'vue'
 import type { TReview } from '~/types/review'
 import type { TPagination } from '~/types/pagination'
 import { useNetworkOperation } from '~/store'
+import { capitalize } from '~/utilities/string'
 
 const route = useRoute()
 const networkOperation = useNetworkOperation()
@@ -14,7 +15,7 @@ const {
 const endpoint = route.params?.slug
   ? `${API_URL}/categories/${route.params.slug}/reviews?page=1&count=${REVIEW_COUNT}&fields=title,slug,image,created_at,excerpt,author,categories,series`
   : `${API_URL}/reviews?page=1&count=${REVIEW_COUNT}&fields=title,slug,image,created_at,excerpt,author,categories,series`
-const { data } = useFetch(endpoint, {
+const { data } = await useFetch(endpoint, {
   key: endpoint,
   dedupe: 'defer',
   getCachedData: (key, nuxtApp) => {
@@ -40,6 +41,27 @@ const pagination: TPagination = computed({
     return data.value?.pagination
   },
   set: (newPagination) => {},
+})
+
+const categoryName = capitalize(route.params?.slug ? route.params.slug.split("-")[0] : "")
+
+const title = route.params?.slug
+  ? `Olamileke's Library - ${categoryName}`
+  : "Olamileke's Library"
+const description = route.params?.slug
+  ? `Reviews for ${categoryName} books I read.`
+  : 'A space for me to pen my feelings, thoughts and opinions about books I read.'
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogUrl: route.params?.slug
+    ? `https://library.olamileke.dev/${route.params.slug}`
+    : 'https://library.olamileke.dev',
+  twitterCreator: '@f_olamileke',
+  twitterTitle: title,
+  twitterDescription: description,
 })
 
 const loadReviews = async () => {

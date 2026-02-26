@@ -1,9 +1,9 @@
 <script setup lang="ts">
 definePageMeta({
-    layout: "index-layout"
+  layout: 'index-layout',
 })
 </script>
 
 <template>
-    <CategoryReviews />
+  <CategoryReviews />
 </template>

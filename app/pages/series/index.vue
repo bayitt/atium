@@ -2,6 +2,19 @@
 import { computed, onMounted } from 'vue'
 import { useNetworkOperation } from '~/store'
 
+const title = "Olamileke's Library - Series"
+const description = 'A rundown of the different series containing reviews on the platform'
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogUrl: 'https://library.olamileke.dev/series',
+  twitterCreator: '@f_olamileke',
+  twitterTitle: title,
+  twitterDescription: description,
+})
+
 definePageMeta({ layout: 'index-layout' })
 
 const networkOperation = useNetworkOperation()
@@ -11,7 +24,7 @@ const {
 } = useRuntimeConfig()
 const SERIES_COUNT = 10
 const endpoint = `${API_URL}/series?page=1&count=${SERIES_COUNT}`
-const { data } = useFetch(endpoint, {
+const { data } = await useFetch(endpoint, {
   key: endpoint,
   dedupe: 'defer',
   getCachedData: (key, nuxtApp) => {

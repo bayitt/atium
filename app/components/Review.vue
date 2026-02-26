@@ -10,6 +10,7 @@ defineProps<Omit<TReview, 'content'>>()
     :to="slug"
     custom
     v-slot="{ navigate }"
+    role="link"
     class="
       flex flex-col-reverse
       sm:grid
