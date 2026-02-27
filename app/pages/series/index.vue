@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
+import type { TSeries } from '~/types/series'
+import type { TPagination } from '~/types/pagination'
 import { useNetworkOperation } from '~/store'
 
 const title = "Olamileke's Library - Series"
@@ -32,7 +34,7 @@ const { data } = await useFetch(endpoint, {
   },
 })
 
-const series = computed({
+const series: TSeries[] | undefined = computed({
   get: () => {
     if (!data.value?.series) return undefined
 
@@ -43,8 +45,8 @@ const series = computed({
   },
 })
 
-const pagination = computed(() => {
-  if (!data.value?.pagination) return { currentPage: 1, totalPages: 1 }
+const pagination: TPagination | undefined = computed(() => {
+  if (!data.value?.pagination) return undefined
 
   return data.value.pagination
 })
@@ -163,9 +165,6 @@ onUnmounted(() => {
       <template v-if="networkOperation === 'get.series'">
         <SeriesSkeleton v-for="n in 3" :key="n" />
       </template>
-    </template>
-    <template v-else>
-      <SeriesSkeleton v-for="n in 4" :key="n" />
     </template>
   </div>
 </template>

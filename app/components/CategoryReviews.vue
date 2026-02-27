@@ -25,7 +25,7 @@ const { data } = await useFetch(endpoint, {
 
 const reviews: any = computed({
   get: () => {
-    if (!data.value) return []
+    if (!data.value) return undefined
 
     return [...data.value?.reviews]
   },
@@ -34,9 +34,9 @@ const reviews: any = computed({
   },
 })
 
-const pagination: TPagination = computed({
+const pagination: TPagination | undefined = computed({
   get: () => {
-    if (!data.value) return { currentPage: 1, totalPages: 1 }
+    if (!data.value) return undefined
 
     return data.value?.pagination
   },
@@ -106,14 +106,11 @@ onUnmounted(() => {
 
 <template>
   <div class="flex flex-col gap-8">
-    <template v-if="data?.reviews">
+    <template v-if="reviews">
       <Review v-for="(review, index) in reviews" :key="index" v-bind="review" />
       <template v-if="networkOperation === 'get.reviews'">
         <ReviewSkeleton v-for="n in 3" :key="n" />
       </template>
-    </template>
-    <template v-else>
-      <ReviewSkeleton v-for="n in 4" :key="n" />
     </template>
   </div>
 </template>
