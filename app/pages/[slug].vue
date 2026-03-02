@@ -34,12 +34,26 @@ const { data: review } = await useAsyncData(route.params.slug, async () => {
   },
 })
 
-const getReadingTime = () => {
-  if (!review.value || !window) return 0
+const title = capitalize(review.value.title)
+const description = review.value.content?.slice(0, 155)?.replace(/<[^>]+>/g, "") + "..."
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogUrl: `https://library.olamileke.dev${review.value.slug}`,
+  ogImage: review.value.image,
+  ogImageWidth: 800,
+  twitterCreator: '@f_olamileke',
+  twitterTitle: title,
+  twitterDescription: description,
+  twitterImage: review.value.image
+})
 
-  const div = window.document.createElement('div')
-  div.innerHTML = review.value.content
-  return Math.ceil((div.textContent ?? '').split(' ').length / 225)
+const getReadingTime = () => {
+  if (!review.value) return 0
+
+  return Math.ceil(review.value.content.replace(/<[^>]+>/g, "").split(' ').length / 275)
 }
 </script>
 

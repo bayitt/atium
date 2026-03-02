@@ -21,4 +21,11 @@ export default defineNuxtConfig({
       API_URL: process.env?.NUXT_API_URL,
     },
   },
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/sitemap.xml', '/robots.txt'],
+    },
+  },
 })

@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+const image = 'https://res.cloudinary.com/olamileke/image/upload/c_thumb,w_600,g_face/v1760027186/chequer_dev/ol-high-resolution-logo_fmyams.png'
 useHead({
   meta: [
     { name: 'type', content: 'website' },
     { name: 'og:site_name', content: "Olamileke's Library" },
+    { name: 'og:image', content: image },
+    { name: 'og:image_width', content: 800 },
+    { name: 'twitter:image', content: image }
   ],
   link: [
     {
