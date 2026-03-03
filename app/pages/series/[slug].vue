@@ -34,15 +34,19 @@ const series: TSeries = computed(() => seriesResponse.value)
 const reviews: TReview[] | undefined = computed(() => reviewResponse.value)
 
 const title = `${capitalize(seriesResponse.value.name)} by ${capitalize(seriesResponse.value.author)}`
+const image = seriesResponse.value.images.length > 0 ? seriesResponse.value.images[0] : undefined,
 useSeoMeta({
   title,
   description: seriesResponse.value.description,
   ogTitle: title,
   ogDescription: seriesResponse.value.description,
   ogUrl: 'https://library.olamileke.dev/series',
+  ogImage: image,
+  ogImageWidth: 450,
   twitterCreator: '@f_olamileke',
   twitterTitle: title,
   twitterDescription: seriesResponse.value.description,
+  twitterImage: image,
 })
 </script>
 

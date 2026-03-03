@@ -43,7 +43,7 @@ useSeoMeta({
   ogDescription: description,
   ogUrl: `https://library.olamileke.dev${review.value.slug}`,
   ogImage: review.value.image,
-  ogImageWidth: 800,
+  ogImageWidth: 450,
   twitterCreator: '@f_olamileke',
   twitterTitle: title,
   twitterDescription: description,

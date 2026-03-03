@@ -7,7 +7,7 @@ useHead({
     { name: 'type', content: 'website' },
     { name: 'og:site_name', content: "Olamileke's Library" },
     { name: 'og:image', content: image },
-    { name: 'og:image_width', content: 800 },
+    { name: 'og:image_width', content: 450 },
     { name: 'twitter:image', content: image }
   ],
   link: [
