@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { TSeries } from '~/types/series'
-import { TReview } from '~/types/review'
+import type { TSeries } from '~/types/series'
+import type { TReview } from '~/types/review'
 import { capitalize } from '~/utilities/string'
 
 definePageMeta({
