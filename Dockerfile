@@ -14,7 +14,7 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn build
+RUN yarn nuxt generate
 
 # Run step of the Dockerfile. Gets the compiled build of the app from the build step and runs it.
 FROM final
@@ -27,9 +27,7 @@ RUN apk update && apk add nginx
 
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
-COPY --from=build /app/dist /app/dist
-
-COPY --from=build /app/node_modules /app/node_modules
+COPY --from=build /app/.output /app/.output
 
 EXPOSE 80
 

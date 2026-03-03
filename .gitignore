@@ -1,3 +1,29 @@
+<<<<<<< HEAD
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.example
+=======
 # Logs
 logs
 *.log
@@ -31,3 +57,4 @@ coverage
 
 # Environment Variables
 .env
+>>>>>>> 3db5570ec6996740ca6ea18b2591e6c21fb30f1c
