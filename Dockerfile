@@ -32,5 +32,3 @@ COPY --from=build /app/.output /app/.output
 EXPOSE 80
 
 CMD ["nginx", "-g", "'daemon off;'"]
-
-#  npx serve .output/public  
