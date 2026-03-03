@@ -14,7 +14,7 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn nuxt generate
+RUN yarn nuxt prepare && yarn nuxt generate
 
 # Run step of the Dockerfile. Gets the compiled build of the app from the build step and runs it.
 FROM final
