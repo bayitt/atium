@@ -2,9 +2,9 @@ FROM node:22-alpine as final
 FROM node:22-alpine as build
 
 # Build step of the Dockerfile. Compiles the application into a smaller, sleeked down, optimized build.
-RUN mkdir -p /app
+RUN mkdir -p /atium
 
-WORKDIR /app
+WORKDIR /atium
 
 COPY package*.json ./
 
@@ -19,15 +19,15 @@ RUN yarn nuxt generate
 # Run step of the Dockerfile. Gets the compiled build of the app from the build step and runs it.
 FROM final
 
-RUN mkdir -p /app
+RUN mkdir -p /atium
 
-WORKDIR /app
+WORKDIR /atium
 
 RUN apk update && apk add nginx
 
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
-COPY --from=build /app/.output /app/.output
+COPY --from=build /atium/.output /atium/.output
 
 EXPOSE 80
 
