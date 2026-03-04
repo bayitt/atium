@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useTemplateRef } from "vue"
+
+defineEmits<{ handleClose: [] }>()
+
+const inputRef = useTemplateRef('input')
+</script>
 
 <template>
   <div class="fixed top-0 left-0 w-screen h-screen bg-white z-10 flex justify-center items-center">
@@ -17,7 +23,9 @@
 
       <div class="w-full relative mb-8">
         <input
+          autoFocus
           type="email"
+          ref="inputRef"
           class="
             w-full
             px-3
@@ -41,7 +49,7 @@
         >
       </div>
 
-      <div class="flex items-center gap-[6px] cursor-pointer">
+      <div class="flex items-center gap-[6px] cursor-pointer" @click="$emit('handleClose')">
         <p class="text-[rgba(0,0,0,0.75)]">No, take me to the library</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"

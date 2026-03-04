@@ -20,6 +20,7 @@ useHead({
 })
 
 const isDialogOpen = ref(false)
+const isSubscribePromptOpen = ref(true)
 </script>
 
 <template>
@@ -65,5 +66,5 @@ const isDialogOpen = ref(false)
     </svg>
   </div>
 
-  <SubscribePrompt />
+  <SubscribePrompt v-if="isSubscribePromptOpen" @handleClose="isSubscribePromptOpen = false" />
 </template>
