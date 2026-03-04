@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { useTemplateRef, watchEffect, ref } from 'vue'
-import { store } from "~/store"
+import { useNetworkOperation } from '~/store'
 
 const props = defineProps<{ isOpen: boolean }>()
 const emits = defineEmits<{ handleClose: [] }>()
-const showMessage = ref<boolean>(false)
+const message = ref('')
 const input = useTemplateRef('input')
+const {
+  public: { API_URL },
+} = useRuntimeConfig()
+const networkOperation = useNetworkOperation()
 
 watchEffect(() => {
-  if (!window)
-    return
+  if (!window) return
 
   window.document.body.style.height = props.isOpen ? '100vh' : 'auto'
   window.document.body.style.overflowY = props.isOpen ? 'hidden' : 'visible'
@@ -17,21 +20,30 @@ watchEffect(() => {
   if (props.isOpen && input.value) input.value.focus()
 })
 
-const onSubscribe = () => {
+const subscribe = async () => {
   if (!input?.value) return
+  if (networkOperation.value === 'subscribe') return
 
-  input.value.value = ''
-  input.value.focus()
+  networkOperation.value = "subscribe"
 
-  showMessage.value = true
-  setTimeout(() => {
-    showMessage.value = false
-  }, 4000)
-}
+  try {
+    const response = await $fetch(`${API_URL}/subscribers`, {
+      method: 'POST',
+      body: { email: input.value.value },
+    })
 
-const subscribe = () => {
-  if (!input?.value) return
-  if (store.networkOperation === 'subscribe') return
+    input.value.value = ''
+    input.value.focus()
+
+    message.value = 'You are subscribed successfully !'
+    setTimeout(() => {
+      message.value = ''
+    }, 4000)
+  } catch (error) {
+    message.value = 'There was an issue subscribing'
+  }
+  
+  networkOperation.value = ""
 }
 </script>
 
@@ -64,7 +76,7 @@ const subscribe = () => {
       </p>
       <div class="mb-4">
         <input
-          type="email"
+          email
           ref="input"
           class="
             w-full
@@ -74,22 +86,21 @@ const subscribe = () => {
             transition-colors
             duration-300
             ease-in
-            border-[2.5px] border-[rgba(0,0,0,0.2)]
-            focus:border-[rgba(0,0,0,0.5)]
             rounded
             placeholder:text-[rgba(0,0,0,0.75)]
           "
+          :class="message === '' || message.includes('success') ? 'border-[2.5px] border-[rgba(0,0,0,0.2)] focus:border-[rgba(0,0,0,0.5)]' : 'border-[2.5px] border-[#FF7F7F]'"
           placeholder="Enter your email address"
           required
         />
-        <p v-if="showMessage" class="text-sm mt-2 text-[rgba(0,0,0,0.98)]">
-          You are subscribed successfully !
+        <p class="text-sm mt-2" :class="message === '' || message.includes('success') ? 'text-[rgba(0,0,0,0.98)]' : 'text-[#FF0000]'">
+          {{ message }}
         </p>
       </div>
       <Button class="w-full !py-[14px] !text-[0.94rem]" type="submit"
         >Subscribe
         <span
-          v-if="store.networkOperation == 'subscribe'"
+          v-if="networkOperation == 'subscribe'"
           class="
             ml-1
             size-4
