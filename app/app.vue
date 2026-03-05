@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const image = 'https://res.cloudinary.com/olamileke/image/upload/c_thumb,w_600,g_face/v1760027186/chequer_dev/ol-high-resolution-logo_fmyams.png'
 useHead({
@@ -23,7 +23,11 @@ const hasSubscribedCookie = useCookie('has_subscribed', { maxAge: 60 * 60 * 24 *
 const visitedRecentlyCookie = useCookie('visited_recently', { maxAge: 60 * 60 * 24 * 10 })
 
 const isDialogOpen = ref(false)
-const isSubscribePromptOpen = ref(!(hasSubscribedCookie.value || visitedRecentlyCookie.value))
+const isSubscribePromptOpen = ref(false)
+
+onMounted(() => {
+  isSubscribePromptOpen.value = !(hasSubscribedCookie.value || visitedRecentlyCookie.value)
+})
 </script>
 
 <template>
@@ -69,5 +73,5 @@ const isSubscribePromptOpen = ref(!(hasSubscribedCookie.value || visitedRecently
     </svg>
   </div>
 
-  <SubscribePrompt v-if="isSubscribePromptOpen" @handleClose="isSubscribePromptOpen = false" />
+  <SubscribePrompt :isOpen="isSubscribePromptOpen" @handleClose="isSubscribePromptOpen = false" />
 </template>

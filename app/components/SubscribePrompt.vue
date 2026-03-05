@@ -3,6 +3,7 @@ import { ref, useTemplateRef, onMounted, onUnmounted } from 'vue'
 import { useNetworkOperation } from '~/store'
 import { generateRandomString } from '~/utilities/string'
 
+const props = defineProps<{ isOpen: boolean }>()
 const emit = defineEmits<{ handleClose: [] }>()
 const {
   public: { API_URL },
@@ -55,7 +56,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="fixed top-0 left-0 w-screen h-screen bg-white z-10 flex justify-center items-center">
+  <div class="fixed transition-all duration-700 ease-in left-0 w-screen h-screen bg-white z-10 flex justify-center items-center"
+  :class="props.isOpen ? 'top-0' : '-top-[100vh]'">
     <div class="relative -top-[5vh] w-5/6 sm:w-[420px] flex flex-col items-center text-[rgba(0,0,0,0.7)]">
       <img
         src="https://res.cloudinary.com/olamileke/image/upload/c_thumb,w_55,g_face/v1760027186/chequer_dev/ol-high-resolution-logo_fmyams.png"
@@ -130,7 +132,7 @@ onUnmounted(() => {
       </form>
 
       <div class="flex items-center gap-[6px] cursor-pointer" @click="$emit('handleClose')">
-        <p class="text-[rgba(0,0,0,0.75)]">No, take me to the library</p>
+        <p class="text-[rgba(0,0,0,0.75)]">No, continue to the library</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
