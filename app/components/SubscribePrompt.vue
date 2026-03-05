@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, useTemplateRef, onMounted, onUnmounted } from 'vue'
+import { ref, useTemplateRef, watchEffect } from 'vue'
 import { useNetworkOperation } from '~/store'
 import { generateRandomString } from '~/utilities/string'
 
@@ -43,15 +43,14 @@ const subscribe = async () => {
   networkOperation.value = ''
 }
 
-onMounted(() => {
-  window.document.body.style.height = '100vh'
-  window.document.body.style.overflowY = 'hidden'
-  visitedRecentlyCookie.value = generateRandomString(10)
-})
+watchEffect(() => {
+  if (!window) return
 
-onUnmounted(() => {
-  window.document.body.style.height = 'auto'
-  window.document.body.style.overflowY = 'visible'
+  window.document.body.style.height = props.isOpen ? '100vh' : 'auto'
+  window.document.body.style.overflowY = props.isOpen ? 'hidden' : 'visible'
+
+  if (props.isOpen)
+    visitedRecentlyCookie.value = generateRandomString(10)
 })
 </script>
 
