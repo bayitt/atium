@@ -7,7 +7,7 @@ useHead({
     { name: 'type', content: 'website' },
     { name: 'og:site_name', content: "Olamileke's Library" },
     { name: 'og:image', content: image },
-    { name: 'og:image_width', content: 800 },
+    { name: 'og:image_width', content: 600 },
     { name: 'twitter:image', content: image }
   ],
   link: [
@@ -19,7 +19,11 @@ useHead({
   ],
 })
 
+const hasSubscribedCookie = useCookie('has_subscribed', { maxAge: 60 * 60 * 24 * 365 })
+const visitedRecentlyCookie = useCookie('visited_recently', { maxAge: 60 * 60 * 24 * 10 })
+
 const isDialogOpen = ref(false)
+const isSubscribePromptOpen = ref(!(hasSubscribedCookie.value || visitedRecentlyCookie.value))
 </script>
 
 <template>
@@ -64,4 +68,6 @@ const isDialogOpen = ref(false)
       />
     </svg>
   </div>
+
+  <SubscribePrompt v-if="isSubscribePromptOpen" @handleClose="isSubscribePromptOpen = false" />
 </template>

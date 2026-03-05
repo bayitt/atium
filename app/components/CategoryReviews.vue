@@ -50,7 +50,7 @@ const title = route.params?.slug
   : "Olamileke's Library"
 const description = route.params?.slug
   ? `Reviews for ${categoryName} books I read.`
-  : 'A space for me to pen my feelings, thoughts and opinions about books I read.'
+  : 'Musings, thoughts and opinions about books I read.'
 useSeoMeta({
   title,
   description,
