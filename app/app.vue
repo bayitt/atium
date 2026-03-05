@@ -19,8 +19,11 @@ useHead({
   ],
 })
 
+const hasSubscribedCookie = useCookie('has_subscribed', { maxAge: 60 * 60 * 24 * 365 })
+const visitedRecentlyCookie = useCookie('visited_recently', { maxAge: 60 * 60 * 24 * 10 })
+
 const isDialogOpen = ref(false)
-const isSubscribePromptOpen = ref(true)
+const isSubscribePromptOpen = ref(!(hasSubscribedCookie.value || visitedRecentlyCookie.value))
 </script>
 
 <template>
