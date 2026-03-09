@@ -13,7 +13,7 @@ const message = ref('')
 const input = useTemplateRef('input')
 
 const hasSubscribedCookie = useCookie('has_subscribed', { maxAge: 60 * 60 * 24 * 3650 })
-const visitedRecentlyCookie = useCookie('visited_recently', { maxAge: 60 * 60 * 24 * 10 })
+const visitedRecentlyCookie = useCookie('visited_recently', { maxAge: 60 * 60 * 24 * 3 })
 
 const subscribe = async () => {
   if (!input?.value) return
